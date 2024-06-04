@@ -1,4 +1,33 @@
 .navigation {
-    background-color: red;
+    box-shadow: 0px 2px 12px 2px #fcc9b1b8;
     margin: 0;
+    padding: 2rem;
+    margin-bottom: 4%;
+}
+
+
+.list {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+
+.list a {
+    text-decoration: none;
+    color: #ffff;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 1px;
+}
+
+
+.list a:hover,
+.list a:active,
+.list a.active {
+    box-shadow: 0px 2px 0px 0px #ffffffb7;
+    color: #ffffffb7;
+    transition: all 0.3s;
 }

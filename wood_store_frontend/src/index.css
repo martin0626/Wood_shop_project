@@ -13,3 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.815), rgba(0, 0, 0, 0.411)), url('./assets/wood-bckgr.jpeg');
+  background-size: cover;
+}
