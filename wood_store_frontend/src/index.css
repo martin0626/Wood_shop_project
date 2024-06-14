@@ -19,3 +19,8 @@ body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.815), rgba(0, 0, 0, 0.411)), url('./assets/wood-bckgr.jpeg');
   background-size: cover;
 }
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}

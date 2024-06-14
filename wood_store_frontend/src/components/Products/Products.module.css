@@ -1,0 +1,14 @@
+.productsMain {
+    margin: 0rem 12rem 0rem 12rem;
+}
+
+
+.productsSection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    padding: 2rem;
+    background: #181818a3;
+    column-gap: 2rem;
+    row-gap: 2rem;
+}

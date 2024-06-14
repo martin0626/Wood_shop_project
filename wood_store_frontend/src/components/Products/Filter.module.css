@@ -1,0 +1,30 @@
+.filterElement {
+    color: #ffff;
+    width: 100%;
+    border-top: 1px solid #fcc9b1b8;
+    border-bottom: 1px solid #fcc9b1b8;
+    padding: 1rem 3rem 1rem 3rem;
+}
+
+
+.filterLinks {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    list-style: none;
+}
+
+.filterLinks li{
+    text-decoration: none;
+}
+
+
+.filterLinks li:hover{
+    cursor: pointer;
+    color: #ffffffb7;
+    transition: all 0.3s;
+}
