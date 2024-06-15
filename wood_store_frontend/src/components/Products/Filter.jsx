@@ -1,8 +1,16 @@
+import { useState } from "react"
 import classes from "./Filter.module.css"
 import { motion } from 'framer-motion'
 
 
 export default function Filter(){
+    const [isOpenSort, setisOpenSort] = useState(false);
+
+    const showSortHandler = ()=>{
+        setisOpenSort(!isOpenSort);
+    }
+    
+
     return (
             <motion.div 
                 initial={{opacity:0}} 
@@ -11,8 +19,34 @@ export default function Filter(){
                 className={classes.filterElement}
             >   
                 <ul className={classes.filterLinks}>
-                    <li>Filter</li>
-                    <li>Sort</li>
+                    <li>Filter<i class="material-icons">filter_list</i></li>
+                    <div className={`${classes.sortSec}`}>
+                        <motion.li 
+                            onClick={showSortHandler}
+                            layout
+                            initial={{ opacity: 1 }}
+                            animate={{ x: isOpenSort ? 0 : 0 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            Sort{isOpenSort ? <i class="material-icons">first_page</i> : <i class="material-icons">chevron_right</i>}
+                        </motion.li>
+                        
+                        {
+                            isOpenSort
+                             && 
+                             <motion.div
+                                className={classes.sortOptions}
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: 'auto' }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.4 }}
+                            >
+                                <p>Price</p>
+                                <p>Material</p>
+                                <p>Size</p>
+                            </motion.div>
+                        }  
+                    </div>
                 </ul>
             </motion.div>
     )

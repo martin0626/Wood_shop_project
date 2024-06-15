@@ -23,8 +23,31 @@
 }
 
 
-.filterLinks li:hover{
+.filterLinks li:hover, p:hover{
     cursor: pointer;
     color: #ffffffb7;
     transition: all 0.3s;
+}
+
+.sortOptions {
+    display: flex;
+    gap: 12px;
+    font-size: 1.5rem;
+}
+
+.sortOptions p{
+    border-right: 1px solid #fff;
+    padding-right: 12px;
+}
+
+.sortOptions p:last-of-type{
+    border-right: 0px;
+}
+
+
+
+.sortSec {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
 }

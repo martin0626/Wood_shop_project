@@ -8,7 +8,8 @@
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     padding: 2rem;
-    background: #181818a3;
+    background: #18181856;
     column-gap: 2rem;
     row-gap: 2rem;
+    padding-top: 12rem;
 }
