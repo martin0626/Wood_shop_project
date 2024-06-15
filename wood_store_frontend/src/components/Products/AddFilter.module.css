@@ -1,0 +1,35 @@
+.filterForm {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.priceFilter {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.filterHeader {
+    text-align: center;
+    margin-bottom: 6rem;
+    padding-bottom: 1   rem;
+    border-bottom: 1px solid #ffffff63;
+}
+
+
+.buttonFilter {
+    display: flex;
+    justify-content: center;
+    margin-top: 12rem;
+    gap: 2rem;
+}
+
+.buttonFilter button {
+    padding: 1rem 3rem;
+    border-radius: 6px;
+    border: none;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}

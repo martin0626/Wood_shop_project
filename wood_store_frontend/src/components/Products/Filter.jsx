@@ -3,7 +3,7 @@ import classes from "./Filter.module.css"
 import { motion } from 'framer-motion'
 
 
-export default function Filter(){
+export default function Filter({onOpen}){
     const [isOpenSort, setisOpenSort] = useState(false);
 
     const showSortHandler = ()=>{
@@ -19,7 +19,7 @@ export default function Filter(){
                 className={classes.filterElement}
             >   
                 <ul className={classes.filterLinks}>
-                    <li>Filter<i class="material-icons">filter_list</i></li>
+                    <li onClick={onOpen}>Filter<i class="material-icons">filter_list</i></li>
                     <div className={`${classes.sortSec}`}>
                         <motion.li 
                             onClick={showSortHandler}
@@ -28,7 +28,7 @@ export default function Filter(){
                             animate={{ x: isOpenSort ? 0 : 0 }}
                             transition={{ duration: 0.3 }}
                         >
-                            Sort{isOpenSort ? <i class="material-icons">first_page</i> : <i class="material-icons">chevron_right</i>}
+                            Sort{isOpenSort ? <i className="material-icons">first_page</i> : <i className="material-icons">chevron_right</i>}
                         </motion.li>
                         
                         {
