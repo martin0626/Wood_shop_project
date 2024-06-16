@@ -85,7 +85,7 @@ export default function AddFilter({onClose}){
                             </div>
                         </div>
                     </div>
-                    <div className={classes.typeF}>
+                    <div className={classes.otherF}>
                         <h2>Other</h2>
                         <label for="dropdown">Choose from the dropdown:</label>
                         <select defaultValue='all' id="dropdown" name="dropdown">
