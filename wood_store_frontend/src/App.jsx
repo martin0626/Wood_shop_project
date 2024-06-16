@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Root from './pages/RootPage'
 import Home from './pages/HomePage'
-import Products from './pages/ProductsPage'
+import Products, { loader as productLoaders } from './pages/ProductsPage'
 import ProdDetails from './pages/ProductDetailsPage'
 import Order from './pages/OrederPage'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -23,6 +23,7 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <Products/>,
+        loader: productLoaders,
         children: [
           {
             path: ':id',

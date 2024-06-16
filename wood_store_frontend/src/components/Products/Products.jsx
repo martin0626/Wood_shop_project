@@ -4,10 +4,12 @@ import { AnimatePresence, motion } from 'framer-motion'
 import SingleProductComponent from "./SingleProduct"
 import { useState } from "react"
 import AddFilterComponent from "./AddFilter"
+import { useLoaderData } from "react-router"
 
 
 export default function ProductsComponent(){
     const [isOpenCreateFilter, setIsOpenCreateFilter] = useState(false);
+    const products = useLoaderData();
 
     const handelOpenNewFilter = ()=>{
         setIsOpenCreateFilter(true);
@@ -31,14 +33,9 @@ export default function ProductsComponent(){
                 </AnimatePresence>
                 <Filter onOpen={handelOpenNewFilter}/>
                 <section className={classes.productsSection}>
-                    <SingleProductComponent/>
-                    <SingleProductComponent/>
-                    <SingleProductComponent/>
-                    <SingleProductComponent/>
-                    <SingleProductComponent/>
-                    <SingleProductComponent/>
-                    <SingleProductComponent/>
-                    <SingleProductComponent/>
+                    {
+                        products.map(product => <SingleProductComponent key={product.id} name={product.name} price={product.price}/>)
+                    }
                 </section>
             </motion.div>
     )

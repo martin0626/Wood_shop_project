@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import productImage from '../../assets/interior.jpg'
 
 
-export default function SingleProductComponent(){
+export default function SingleProductComponent({name, price}){
     return (
             <motion.div 
                 initial={{opacity:0}} 
@@ -15,8 +15,8 @@ export default function SingleProductComponent(){
                     <img src={productImage} alt='Product image'/>
                 </div>
                 <div className={classes.cardDescription}>
-                    <p className={classes.cardName}>Wood table Star Wars</p>
-                    <p className={classes.cardPrice}>2334.99 BGN</p>
+                    <p className={classes.cardName}>{name}</p>
+                    <p className={classes.cardPrice}>{price} BGN</p>
                 </div>
             </motion.div>
     )
