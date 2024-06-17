@@ -27,6 +27,7 @@
     background-color: rgba(0, 0, 0, 0.308); /* Change this to the color and opacity you want */
     opacity: 0;
     transition: opacity 0.5s ease;
+    pointer-events: none;
 }
 
 .productContainer:hover::after{
