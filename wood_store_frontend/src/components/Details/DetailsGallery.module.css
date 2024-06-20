@@ -1,0 +1,33 @@
+.gallery {
+    overflow-y: auto;
+}
+
+
+.mainImage {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.mainImage img{
+    max-width: 100%;
+}
+
+.otherImages {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 40vh;
+    gap: 2rem;
+}
+
+.otherImages div{
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+}
+
+.otherImages div img {
+    max-width: 100%;
+    max-height: 100%;
+}

@@ -1,0 +1,11 @@
+.mainDetailElement{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin: 2rem;
+    height: 150vh;
+    background: #1818187c;
+    border-radius: 8px;
+}
+
+
+

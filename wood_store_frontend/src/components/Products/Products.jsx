@@ -32,7 +32,7 @@ export default function ProductsComponent({products}){
                 <Filter onOpen={handelOpenNewFilter}/>
                 <section className={classes.productsSection}>
                     {
-                        products.map(product => <SingleProductComponent key={product.id} name={product.name} price={product.price}/>)
+                        products.map(product => <SingleProductComponent key={product.id} imgSrc={product.image} id={product.id} name={product.name} price={product.price}/>)
                     }
                 </section>
             </motion.div>
