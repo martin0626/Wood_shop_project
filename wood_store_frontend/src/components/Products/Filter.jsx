@@ -19,7 +19,7 @@ export default function Filter({onOpen}){
                 className={classes.filterElement}
             >   
                 <ul className={classes.filterLinks}>
-                    <li onClick={onOpen}>Filter<i class="material-icons">filter_list</i></li>
+                    <li onClick={onOpen}>Filter<i className="material-icons">filter_list</i></li>
                     <div className={`${classes.sortSec}`}>
                         <motion.li 
                             onClick={showSortHandler}

@@ -9,15 +9,17 @@ export default function Products(){
     const { products } = useLoaderData();
 
     return (
-    <Suspense fallback={
-    <div style={{margin: '0rem 12rem 0rem 12rem'}}>
-        <Filter onOpen={()=>{}}/>
-        <LoadingUi/>
-    </div>}>
-        <Await resolve={products}>
-            {(loadedProducts) => <ProductsComponent products={loadedProducts}/>}
-        </Await>
-    </Suspense>
+    <div>
+        <Suspense fallback={
+        <div style={{margin: '0rem 12rem 0rem 12rem'}}>
+            <Filter onOpen={()=>{}}/>
+            <LoadingUi/>
+        </div>}>
+            <Await resolve={products}>
+                {(loadedProducts) => <ProductsComponent products={loadedProducts}/>}
+            </Await>
+        </Suspense>
+    </div>
     );
 };
 

@@ -16,6 +16,12 @@ export default function DetailsProduct({product}){
         >
             <DetailsGellery/>
             <DetailsDescription product={product}/>
+            <div className={classes.descriptionSection}>
+                <h1>Description</h1>
+                <div className={classes.descriptionText}>
+                    <p>{product.description}</p>
+                </div>
+            </div>
         </motion.div>
     )
 }

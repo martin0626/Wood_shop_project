@@ -58,9 +58,16 @@
     gap: 2rem;    
 }
 
-.detailQuantity a:hover{
+
+
+.detailQuantity {
+    border: none;
+    background: none;
+}
+
+.detailQuantity i:hover {
     transition: all 0.3s;
     cursor: pointer;
     box-shadow: 0px 0px 12px 2px #fcc9b1b8;
-    border-radius: 6px;
+    background-color: #fcc319e1;
 }

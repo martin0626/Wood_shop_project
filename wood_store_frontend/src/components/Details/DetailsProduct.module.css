@@ -2,10 +2,38 @@
     display: grid;
     grid-template-columns: 3fr 1fr;
     margin: 2rem;
-    height: 150vh;
+    height: 200vh;
     background: #1818187c;
     border-radius: 8px;
 }
 
 
 
+.descriptionSection {
+    grid-column: 1 / span 4;
+    padding: 2rem;
+    margin: 2rem;
+    text-align: center;
+    color: #ffff;
+    font-size: 2rem;
+    border-top: 1px solid #ffffff54;
+
+}
+
+
+.descriptionText {
+    text-align: left;
+    padding: 6rem;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.descriptionText p {
+    font-size: 2rem;
+    
+}
+
+.descriptionText p:hover {
+    color: #ffff;
+    cursor: default;
+}

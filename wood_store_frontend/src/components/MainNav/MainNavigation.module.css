@@ -16,7 +16,7 @@
 .list a {
     text-decoration: none;
     color: #ffff;
-    font-size: 1.6rem;
+    font-size: 2rem;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
@@ -30,4 +30,33 @@
     box-shadow: 0px 2px 0px 0px #ffffffb7;
     color: #ffffffb7;
     transition: all 0.3s;
+    cursor: pointer;
+}
+
+.cartItem{
+    position: relative;
+}
+
+.cartNum{
+    position: absolute;
+    font-size: 1.2rem !important;
+    background-color: #fcc319e1;
+    border-radius: 50%;
+    color: #333 !important;
+    font-weight: bold;
+    letter-spacing: 0px !important;
+    width: 19px;
+    height: 19px;
+    top: -8px;
+    right: -18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.cartNum:hover{
+    box-shadow: none !important;
+    transition: all 0.3s;
+    cursor: default;
 }

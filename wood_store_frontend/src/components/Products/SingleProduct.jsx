@@ -17,8 +17,7 @@ export default function SingleProductComponent({name, price, imgSrc, id}){
                 initial={{opacity:0}} 
                 animate={{opacity: 1}} 
                 transition={{delay: 1}}
-                className={classes.productContainer}
-                
+                className={classes.productContainer}  
             >   
                 <div className={classes.productImg} > 
                     <img onClick={detailsHandler} src={imgSrc ? imgSrc : productImage} alt='Product image'/>

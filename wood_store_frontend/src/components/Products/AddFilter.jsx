@@ -1,6 +1,5 @@
 import classes from "./AddFilter.module.css"
 import { motion } from 'framer-motion'
-import SingleProductComponent from "./SingleProduct"
 import ModalComponent from "../UI/ModalComponent"
 import { useRef, useState } from "react"
 
@@ -29,7 +28,7 @@ export default function AddFilter({onClose}){
                     
                     <div className={classes.priceFilter}>
                         <h2>Price</h2>
-                        {priceRef.current && <label for="slider">Max price: {priceRef.current.value}</label>}
+                        <label for="slider">Max price: {currentPrice}</label>
                         <input onChange={priceChangeHandler} defaultValue={currentPrice} ref={priceRef} type="range" id="slider" name="slider" min={MIN_PRICE} max={MAX_PRICE}/>
                     </div>
                     <div className={classes.materialF}>
