@@ -23,4 +23,26 @@
     /* color: #555; */
   }
 
+
+  .defaultBtn{
+    padding: 1rem 2rem;
+    /* height: 4rem; */
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #333;
+    font-size: 2rem;
+    background-color: #fcc419;
+    border: none;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+
+.defaultBtn:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 12px 2px #fcc9b1b8;
+    background-color: #fcc319e1;
+
+}
   

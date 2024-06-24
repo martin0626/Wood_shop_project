@@ -1,0 +1,53 @@
+.image-slider-container {
+  max-width: 130vh;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%) !important;
+}
+
+.image-slider {
+  border-radius: 6px;
+}
+
+.image-slider img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-slider img:hover {
+  transform: scale(1.05);
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #ffff;
+}
+
+.slick-dots li button::before {
+  font-size: 12px;
+  color: #ffff !important;
+}
+
+.slick-dots li.slick-active button::before {
+  color: #fcc419 !important;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9;
+}
+
+.backdrop:hover {
+  cursor: pointer;
+}

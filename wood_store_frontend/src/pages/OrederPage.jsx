@@ -1,9 +1,9 @@
-import ModalComponent from "../components/UI/ModalComponent";
+import Slider from "react-slick";
+import ImageSlider from "../components/UI/ImageSlider";
 
 export default function Order(){
-    return (
-        
-            <h1>Order page</h1>
-        
+
+    return ( 
+           <ImageSlider/>
     )
 };

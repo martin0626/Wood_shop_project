@@ -97,8 +97,8 @@ export default function AddFilter({onClose}){
                 </form>
             </div>
             <div className={classes.buttonFilter}>
-                <button>Apply</button>
-                <button onClick={onClose}>Close</button>
+                <button className="defaultBtn">Apply</button>
+                <button className="defaultBtn" onClick={onClose}>Close</button>
             </div>
         </ModalComponent>
     )

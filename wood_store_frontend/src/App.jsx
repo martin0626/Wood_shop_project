@@ -9,6 +9,9 @@ import { loader as productDetailsLoader } from './pages/ProductDetailsPage'
 import ProdDetails from './pages/ProductDetailsPage'
 import Order from './pages/OrederPage'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+//Slick
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 
