@@ -1,0 +1,17 @@
+.checkoutItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: flex-start;
+    border-top: 1px solid #ffffff33;
+    border-bottom: 1px solid #ffffff33;
+    padding: 2rem 6rem 2rem 6rem;
+}
+
+
+.checkoutItemQuantitySec {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}

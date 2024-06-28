@@ -1,9 +1,7 @@
-import Slider from "react-slick";
-import ImageSlider from "../components/UI/ImageSlider";
+import CheckoutMain from "../components/CheckOut/CheckoutMain";
 
 export default function Order(){
-
     return ( 
-           <ImageSlider/>
+           <CheckoutMain/>
     )
 };

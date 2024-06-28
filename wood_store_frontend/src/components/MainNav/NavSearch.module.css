@@ -1,0 +1,36 @@
+.searchNav {
+    justify-self: center;
+    padding-inline-end: 2rem;
+    display: flex;
+    position: relative;
+}
+
+.searchInput {
+    background-color: #3333336b;
+    border: 1px solid #ffffff3b;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+
+.searchIcon {
+    position: absolute;
+    font-size: 18px;
+    right: 12%;
+    top: 50%;
+    transition: all 0.3s;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.searchIconSelected {
+    right: -3% !important;
+    color: #fff;
+    pointer-events: all !important;
+}
+
+.searchIconSelected:hover{
+    color: #ffffff6c;
+}

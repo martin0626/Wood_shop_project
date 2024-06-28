@@ -3,18 +3,28 @@ import ModalComponent from "../UI/ModalComponent";
 import classes from "./Cart.module.css"
 import { uiActions } from "../../store/ui-slice";
 import CartItem from "./CartItem";
+import { useNavigate } from "react-router";
 
 export default function CartComponent(){
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const cartContent = useSelector((state)=> state.cart.items);
     const totalPrice = useSelector((state)=> state.cart.totalPrice);
-
+    
 
 
     const onClose = ()=>{
         dispatch(uiActions.closeCart());
     }
+
+    const handleCheckout = ()=>{
+        if(cartContent.length > 0){
+            onClose();
+            navigate('/order');
+        }
+    }
+
 
     return (
         <ModalComponent onClose={onClose}>
@@ -24,7 +34,7 @@ export default function CartComponent(){
             {
                 cartContent.length &&
                 <div className={classes.totalPrice}>
-                    <a style={{fontWeight: 'bold'}}>Total: </a><a className={classes.priceNum}>{totalPrice}</a><a>BGN</a>
+                    <a style={{fontWeight: 'bold'}}>Total: </a><a className={classes.priceNum}>{totalPrice}</a><a> BGN</a>
                 </div>
             }
             <div className={classes.cartContainer}>
@@ -36,7 +46,7 @@ export default function CartComponent(){
                 
             </div>
             <div className={classes.buttonCart}>
-                    <button className="defaultBtn">Checkout</button>
+                    <button className="defaultBtn" onClick={handleCheckout}>Checkout</button>
                     <button className="defaultBtn" onClick={onClose}>Close</button>
                 </div>
         </ModalComponent>

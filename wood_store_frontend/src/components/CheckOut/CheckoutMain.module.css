@@ -1,0 +1,33 @@
+.checkoutContainer {
+    width: 60%;
+    height: 80vh;
+    background-color: #0000004d;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    color: #fff;
+    padding: 2rem;
+    font-size: 1.5rem;
+    border-radius: 6px;
+    gap:3rem;
+}
+.checkoutContainer > h1 {
+    align-self: center;
+}
+
+.productsCO {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.actionCO {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.title{
+    font-size: 3rem;
+}
