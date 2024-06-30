@@ -1,10 +1,8 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect } from 'react'
 import './App.css'
 import Root from './pages/RootPage'
 import Home from './pages/HomePage'
-import Products, { loader as productLoaders } from './pages/ProductsPage'
+import Products from './pages/ProductsPage'
 import { loader as productDetailsLoader } from './pages/ProductDetailsPage'
 import ProdDetails from './pages/ProductDetailsPage'
 import Order from './pages/OrederPage'
@@ -12,6 +10,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 //Slick
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useDispatch } from 'react-redux'
+import { fetchProductData } from './store/products-actions'
 
 
 
@@ -27,7 +27,6 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <Products/>,
-        loader: productLoaders,
       },
       {
         path: 'products/:id',
@@ -45,6 +44,14 @@ const router = createBrowserRouter([
 
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch(fetchProductData())
+  }, [dispatch]);
+
+
   return <RouterProvider router={router}/>;
 };
 
