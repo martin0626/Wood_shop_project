@@ -1,11 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const notificationDefault = {
+    type: 'single',
+    message: '',
+    header: ''
+}
 
 const uiSlice = createSlice({
     name: 'ui',
     initialState: {
         cartIsOpen: false,
         isLoading: false,
+        hasNotification: false,
+        notification: notificationDefault
     },
     reducers: {
         openCart(state){
@@ -19,6 +26,22 @@ const uiSlice = createSlice({
         },
         setLoaded(state){
             state.isLoading = false;
+        },
+        setErrNotification(state, action){
+            state.hasNotification = true;
+            state.notification = {...action.payload, type: 'error'};
+        },
+        setGreenNotification(state, action){
+            state.hasNotification = true;
+            state.notification = {...action.payload, type: 'green'};
+        },
+        setSingleNotification(state, action){
+            state.hasNotification = true;
+            state.notification = {...action.payload, type: 'single'};
+        },
+        removeNotification(state){
+            state.hasNotification = false;
+            state.notification = notificationDefault;
         }
     }
 })
