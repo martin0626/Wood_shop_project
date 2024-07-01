@@ -1,7 +1,7 @@
 .productContainer {
     position: relative;
     border-radius: 8px;
-    height: 50vh;
+    height: 52rem;
     width: 40rem;
     overflow: hidden;
     box-shadow: 0px 0px 3px 2px #fcc9b1b8;
@@ -66,12 +66,12 @@
 } 
 
 .cardDescription {
-    background-color: #1f1f1f;
+    background-color: #fcc319e1;
     padding: 2rem;
     border-top: 0px solid;
     height: 20%;
     font-size: 2rem;
-    color: #a0a0a0;
+    color: #333;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -81,5 +81,4 @@
 .cardPrice {
     font-size: 2rem;
     font-weight: bold;
-    color: #ffff;
 }

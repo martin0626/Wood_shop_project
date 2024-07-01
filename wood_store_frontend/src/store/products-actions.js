@@ -1,10 +1,16 @@
 import { productsActions } from "./products-slice";
+        
+const productAPIMapper = {
+    'products': 'http://localhost:8000/api/products',
+    'priceAsc': 'http://localhost:8000/api/products/sort/price/asc',
+    'priceDesc': 'http://localhost:8000/api/products/sort/price/desc',
+}
 
-export const fetchProductData= ()=>{
-    return async (dispatch)=>{
 
-        const loadProducts = async ()=>{
-            const response = await fetch('http://localhost:8000/api/products');
+async function fetchProducts(dispatch, url){
+    
+        async function loadProducts(){
+            const response = await fetch(url);
             
             if(!response.ok){
                 throw json(
@@ -14,10 +20,9 @@ export const fetchProductData= ()=>{
                     }
                 );
             }
-
             const data = await response.json();
             return data;
-        }
+        };
 
         try{
             const prodData = await loadProducts();  
@@ -30,7 +35,38 @@ export const fetchProductData= ()=>{
                 {id: 3, name: 'Test 3', price: 222.22, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoFNiOAwMvTAPvyCT7YjOl63ZU6irFl-TlIg&s'}
             ];
         }
-    }
 }
 
+export function loadAllProducts(){
+    const url = productAPIMapper['products'];
+    return async (dispatch)=>{
+        fetchProducts(dispatch, url);
+    }
+};
 
+export function loadPriceAscProducts(){
+    const url = productAPIMapper['priceAsc'];
+    return async (dispatch)=>{
+        fetchProducts(dispatch, url);
+    }
+};
+
+export function loadPriceDescProducts(){
+    const url = productAPIMapper['priceDesc'];
+    return async (dispatch)=>{
+        fetchProducts(dispatch, url);
+    }
+};
+
+export function loadFilterProducts(filter){
+    let url = 'http://localhost:8000/api/products/'
+
+    Object.keys(filter).forEach(key => {
+        url = url + `?${key}=${filter[key]}`
+    });
+
+    console.log(url);
+    return async (dispatch)=>{
+        fetchProducts(dispatch, 'priceDesc');
+    }
+}

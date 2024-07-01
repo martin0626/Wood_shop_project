@@ -1,14 +1,43 @@
 import { useState } from "react"
 import classes from "./Filter.module.css"
 import { motion } from 'framer-motion'
+import { useDispatch } from "react-redux";
+import { loadAllProducts, loadPriceAscProducts, loadPriceDescProducts } from "../../store/products-actions";
+import { uiActions } from "../../store/ui-slice";
+
 
 
 export default function Filter({onOpen}){
     const [isOpenSort, setisOpenSort] = useState(false);
+    const dispatch = useDispatch();
+
+    const setLoadingUi = ()=>{
+        dispatch(uiActions.setLoading());
+        let timer = setTimeout(()=>{
+            dispatch(uiActions.setLoaded());
+        }, 500);
+
+        return ()=> clearTimeout(timer)
+    }
 
     const showSortHandler = ()=>{
         setisOpenSort(!isOpenSort);
     }
+
+    const handlePriceAscSort = ()=>{
+        dispatch(loadPriceAscProducts());
+        setLoadingUi()
+    };
+
+    const handlePriceDescSort = ()=>{
+        dispatch(loadPriceDescProducts());
+        setLoadingUi()
+    };
+
+    const handleClearSort = ()=>{
+        dispatch(loadAllProducts());
+        setLoadingUi()
+    };
     
 
     return (
@@ -39,11 +68,12 @@ export default function Filter({onOpen}){
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: 'auto' }}
                                 exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.4 }}
+                                transition={{ duration: 0.3 }}
                             >
-                                <p>Price</p>
-                                <p>Material</p>
-                                <p>Size</p>
+                                <p onClick={handlePriceAscSort}>Price Asc.</p>
+                                <p onClick={handlePriceDescSort}>Price Desc.</p>
+                                <p onClick={handleClearSort}>Clear</p>
+
                             </motion.div>
                         }  
                     </div>

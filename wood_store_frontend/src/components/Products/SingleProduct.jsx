@@ -16,7 +16,7 @@ export default function SingleProductComponent({name, price, imgSrc, id}){
             <motion.div 
                 initial={{opacity:0}} 
                 animate={{opacity: 1}} 
-                transition={{delay: 1}}
+                transition={{delay: 0.2}}
                 className={classes.productContainer}  
             >   
                 <div className={classes.productImg} > 

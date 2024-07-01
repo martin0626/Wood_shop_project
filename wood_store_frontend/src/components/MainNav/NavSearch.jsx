@@ -55,7 +55,6 @@ export default function NavSearch(){
     }
 
 
-    console.log(results);
     return (
         <div className={classes.searchNav}>
             <input placeholder='Search...' ref={userInput} onChange={handleChange} onFocus={handleFocus} onBlur={handleBlur} className={classes.searchInput} type="text" />

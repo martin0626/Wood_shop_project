@@ -1,12 +1,17 @@
 import { useSelector } from 'react-redux';
 import classes from './CheckoutMain.module.css'
 import CheckOutItem from './CheckoutItem';
+import { useNavigate } from 'react-router';
 
 
 export default function CheckoutMain(){
     const cartItems = useSelector((state)=> state.cart.items);
     const cartPrice = useSelector((state)=> state.cart.totalPrice);
-    debugger
+    const navigate = useNavigate();
+    
+    const handleProceed = ()=>{
+        navigate('/order')
+    }
 
     return (
         <section className={classes.checkoutContainer}>
@@ -17,7 +22,7 @@ export default function CheckoutMain(){
                 {cartItems.map(p=> <CheckOutItem product={p}/>)}
             </div>
             <div className={classes.actionCO}>
-                <button className='defaultBtn'>Proceed</button>
+                <button onClick={handleProceed} className='defaultBtn'>Proceed</button>
             </div>
         </section>
     );

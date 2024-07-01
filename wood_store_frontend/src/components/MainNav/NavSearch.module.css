@@ -53,6 +53,7 @@
     border-radius: 6px;
     max-height: 22rem;
     overflow-y: auto;
+    z-index: 10;
 }
 
 .searchResults li{

@@ -21,7 +21,7 @@ export default function CartComponent(){
     const handleCheckout = ()=>{
         if(cartContent.length > 0){
             onClose();
-            navigate('/order');
+            navigate('/checkout');
         }
     }
 
