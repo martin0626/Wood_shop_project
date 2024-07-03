@@ -1,0 +1,16 @@
+.orderForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    row-gap: 6rem;
+}
+
+.btnOrder {
+    justify-self: center;
+    grid-column: 1 / 2 span;
+    margin-top: 2rem;
+}
+
+
+
+

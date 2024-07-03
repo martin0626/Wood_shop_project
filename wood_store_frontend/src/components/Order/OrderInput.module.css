@@ -1,0 +1,50 @@
+.inputOrder {
+    display: flex;
+    gap:0.5rem;
+    flex-direction: column;
+    padding: 0rem 0rem 0rem 6rem;
+    position: relative;
+}
+
+.inputOrder > label {
+    position: absolute;
+    color: #333333c1;
+    top: 60%;
+    left: 16%;
+    transition: all 0.3s;
+    text-transform: capitalize;
+}
+.clicked {
+    top: 38% !important;
+    left: 14% !important;
+    color: #fff !important;
+}
+
+.inputOrder > input {
+    padding: 2rem 1rem 1rem 1rem;
+    border: none;
+    border-radius: 6px;
+    width: 32rem;
+    background-color: #ffffffd9;
+    box-shadow: 0px 0px 2px 2px #fcc9b1b8;
+    color:#000000;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.errorDiv {
+    width: 100%;
+    height: 2rem;
+    margin-bottom: 4rem;
+}
+
+.errMsg {
+    padding: 1rem;
+    background-color: #d400008f;
+    width: 90%;
+    border-radius: 6px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 1.4rem;
+}
