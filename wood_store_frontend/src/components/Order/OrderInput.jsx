@@ -18,6 +18,7 @@ export default function OrderInput({inputId, label, errText}){
         <div className={classes.inputOrder}>
             <div className={classes.errorDiv}>
                 {errText && <p className={classes.errMsg}>{errText}</p>}
+
             </div>
             <label className={selectedField == inputId && classes.clicked} for={inputId}>{label}</label>
             <input onBlur={handleBlur} onFocus={handleFocus} type="text" id={inputId} name={inputId} required />

@@ -17,7 +17,7 @@ export default function Products(){
 
     if(name){
         filteredProducts = products.filter(p=> p.name.toLowerCase().includes(name.toLowerCase()));
-        filteredProducts.length === 0 && dispatch(uiActions.setSingleNotification({message: `There is no products with name "${name}".`, header: 'There is no results.' }))
+        filteredProducts.length === 0 && dispatch(uiActions.setSingleNotification({message: `There is no products with name "${name}".`, header: 'No results.' }))
     }
 
     products = filteredProducts.length > 0 ? filteredProducts : products;
