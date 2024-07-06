@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0rem;
-    row-gap: 6rem;
+    row-gap: 4rem;
 }
 
 .btnOrder {

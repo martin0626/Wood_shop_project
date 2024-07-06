@@ -4,6 +4,8 @@ import classes from "./Cart.module.css"
 import { uiActions } from "../../store/ui-slice";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router";
+import { cartActions } from "../../store/cart-slice";
+import { clearCartLocalStorage } from "../../store/cart-actions";
 
 export default function CartComponent(){
 
@@ -22,6 +24,15 @@ export default function CartComponent(){
         if(cartContent.length > 0){
             onClose();
             navigate('/checkout');
+        }
+    }
+
+    const handleClearCart = ()=>{
+        const remove = totalPrice > 0 && window.confirm(`This action is going to delete all items from your cart.\n Are you sure?`);
+
+        if(remove){
+            dispatch(cartActions.replaceCart([]));
+            clearCartLocalStorage();
         }
     }
 
@@ -47,7 +58,7 @@ export default function CartComponent(){
             </div>
             <div className={classes.buttonCart}>
                     <button className="defaultBtn" onClick={handleCheckout}>Checkout</button>
-                    <button className="defaultBtn" onClick={onClose}>Close</button>
+                    <button className="defaultBtn" onClick={handleClearCart}>Remove All</button>
                 </div>
         </ModalComponent>
     )

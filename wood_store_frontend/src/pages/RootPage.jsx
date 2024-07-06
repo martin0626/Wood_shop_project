@@ -5,10 +5,12 @@ import { useSelector } from "react-redux";
 import CartComponent from "../components/Cart/Cart";
 import { AnimatePresence } from "framer-motion";
 import Notification from "../components/UI/NotificationComp";
+import { getCartOnLoad } from "../store/cart-actions";
 
 export default function Root(){
     const isCartOpen = useSelector((state)=> state.ui.cartIsOpen)
     const hasNotification = useSelector(state => state.ui.hasNotification);
+    getCartOnLoad();
 
     return (
     <>

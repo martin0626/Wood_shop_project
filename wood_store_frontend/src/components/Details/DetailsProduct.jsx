@@ -14,7 +14,7 @@ export default function DetailsProduct({product}){
             animate={{opacity: 1}} 
             transition={{delay: 0.5}}
         >
-            <DetailsGellery/>
+            <DetailsGellery mainImage={product.imageUrl} images={product.additionalImgUrls}/>
             <DetailsDescription product={product}/>
             <div className={classes.descriptionSection}>
                 <h1>Description</h1>

@@ -1,4 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { updateCartLocalStorage } from './cart-actions';
+
+
+const getTotalPrice = (items)=>{
+    let totalPrice = items.reduce((acc, p)=>{
+        let result = Number(acc) + (p.userQuantity * p.price);
+        return result.toFixed(2);
+    }, 0)
+
+    return totalPrice;
+};
+
+const getTotalQuantity = (items)=>{
+    let totalQuantity = items.reduce((acc, p)=>{
+        return acc + p.userQuantity;
+    }, 0)
+
+    return totalQuantity;
+};
+
 
 
 const cartSlice = createSlice({
@@ -10,8 +30,9 @@ const cartSlice = createSlice({
     },
     reducers: {
         replaceCart(state, action){
-            state.totalQuantity = action.payload.totalQuantity;
-            state.items = action.payload.items;
+            state.items = action.payload;
+            state.totalQuantity = getTotalQuantity(action.payload);
+            state.totalPrice = getTotalPrice(action.payload);
         },
         additemToCart(state, action){
             const product = action.payload;
@@ -24,14 +45,9 @@ const cartSlice = createSlice({
                state.items.push(product);
             }
 
-            state.totalQuantity = state.items.reduce((acc, p)=>{
-                return acc + p.userQuantity;
-            }, 0)
-
-            state.totalPrice = state.items.reduce((acc, p)=>{
-                let result = Number(acc) + (p.userQuantity * p.price);
-                return result.toFixed(2);
-            }, 0)
+            state.totalQuantity = getTotalQuantity(state.items);
+            state.totalPrice = getTotalPrice(state.items);
+            updateCartLocalStorage(state.items);
         },
         removeItemFromCart(state, action){
             const productInCart = state.items.find(p => p.id === action.payload.id);
@@ -42,15 +58,9 @@ const cartSlice = createSlice({
                 productInCart.userQuantity -= 1;
             }
 
-            state.totalQuantity = state.items.reduce((acc, p)=>{
-                return acc + p.userQuantity;
-            }, 0)
-
-
-            state.totalPrice = state.items.reduce((acc, p)=>{
-                let result = Number(acc) + (p.userQuantity * p.price);
-                return result.toFixed(2);
-            }, 0)
+            state.totalQuantity = getTotalQuantity(state.items);
+            state.totalPrice = getTotalPrice(state.items);
+            updateCartLocalStorage(state.items);
         }
     }
 })

@@ -30,14 +30,14 @@
 }
 
 .inputOrder > input {
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 1.5rem;
     border: none;
     border-radius: 6px;
     /* width: 32rem; */
     background-color: #ffffffd9;
     box-shadow: 0px 0px 2px 2px #fcc9b1b8;
-    color:#000000;
-    font-size: 2rem;
+    color: #000000;
+    font-size: 1.5rem;
     letter-spacing: 1px;
     font-weight: bold;
 }
@@ -45,7 +45,7 @@
 .errorDiv {
     width: 100%;
     height: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .errMsg {

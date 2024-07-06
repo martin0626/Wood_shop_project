@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import './ImageSlider.css';
 
-export default function ImageSlider({onClose}){
+export default function ImageSlider({onClose, images}){
     const settings = {
         dots: true,
         infinite: true,
@@ -10,11 +10,11 @@ export default function ImageSlider({onClose}){
         slidesToScroll: 1
     };
 
-    const images = [
-        "https://hips.hearstapps.com/hmg-prod/images/rustic-weathered-wood-logs-royalty-free-image-1654709658.jpg",
-        "https://housing.com/news/wp-content/uploads/2023/04/What-is-timber-wood-and-which-are-the-best-types-f.jpg",
-        "https://hips.hearstapps.com/hmg-prod/images/rustic-weathered-wood-logs-royalty-free-image-1654709658.jpg"
-    ];
+    // const images = [
+    //     "https://hips.hearstapps.com/hmg-prod/images/rustic-weathered-wood-logs-royalty-free-image-1654709658.jpg",
+    //     "https://housing.com/news/wp-content/uploads/2023/04/What-is-timber-wood-and-which-are-the-best-types-f.jpg",
+    //     "https://hips.hearstapps.com/hmg-prod/images/rustic-weathered-wood-logs-royalty-free-image-1654709658.jpg"
+    // ];
     return (
         <>
             <div className="backdrop" onClick={onClose}></div>
