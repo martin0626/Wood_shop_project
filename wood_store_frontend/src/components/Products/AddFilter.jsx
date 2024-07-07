@@ -22,10 +22,24 @@ export default function AddFilter({onClose}){
     const formHandler = (e)=>{
         e.preventDefault();
 
+        const filter = {materials: []};
+
         const fd = new FormData(e.target);
         const data = Object.fromEntries(fd.entries());
+        Object.keys(data).forEach(k=>{
+            const materials = ['oak', 'beech', 'walnut'];
 
-        dispatch(loadFilterProducts(data))
+            if(materials.includes(k)){
+                filter.materials.push(k);
+            }else{
+                filter[k] = data[k].toUpperCase();
+            }
+        })
+
+        filter.materials.length == 0 && delete filter.materials
+
+        dispatch(loadFilterProducts(filter));
+        onClose();
     }
 
 
@@ -40,7 +54,7 @@ export default function AddFilter({onClose}){
                     <div className={classes.priceFilter}>
                         <h2>Price</h2>
                         <label for="slider">Max price: {currentPrice}</label>
-                        <input onChange={priceChangeHandler} defaultValue={currentPrice} ref={priceRef} type="range" id="slider" name="maxPrice" min={MIN_PRICE} max={MAX_PRICE}/>
+                        <input onChange={priceChangeHandler} defaultValue={currentPrice} ref={priceRef} type="range" id="slider" name="price" min={MIN_PRICE} max={MAX_PRICE}/>
                     </div>
                     <div className={classes.materialF}>
                         <h2>Material</h2>
@@ -62,7 +76,7 @@ export default function AddFilter({onClose}){
                     <div className={classes.otherF}>
                         <h2>Field</h2>
                         <label for="dropdown">Choose field of usage:</label>
-                        <select defaultValue='all' id="field" name="field">
+                        <select defaultValue='all' id="category" name="category">
                             <option value="all">All</option>
                             <option value="interior">Interior</option>
                             <option value="exterior">Exterior</option>

@@ -1,5 +1,6 @@
 import Slider from "react-slick";
 import './ImageSlider.css';
+import { useEffect, useRef } from "react";
 
 export default function ImageSlider({onClose, images}){
     const settings = {
@@ -10,16 +11,17 @@ export default function ImageSlider({onClose, images}){
         slidesToScroll: 1
     };
 
-    // const images = [
-    //     "https://hips.hearstapps.com/hmg-prod/images/rustic-weathered-wood-logs-royalty-free-image-1654709658.jpg",
-    //     "https://housing.com/news/wp-content/uploads/2023/04/What-is-timber-wood-and-which-are-the-best-types-f.jpg",
-    //     "https://hips.hearstapps.com/hmg-prod/images/rustic-weathered-wood-logs-royalty-free-image-1654709658.jpg"
-    // ];
+    const gallery = useRef(false);
+
+    useEffect(()=>{
+        gallery.current && gallery.current.scrollIntoView({ behavior: 'smooth' })
+    }, [])
+
     return (
         <>
             <div className="backdrop" onClick={onClose}></div>
-                <div className="image-slider-container">
-                    <Slider {...settings} className="image-slider">
+                <div ref={gallery} className="image-slider-container">
+                    <Slider  {...settings} className="image-slider">
                             {images.map((img, index) => (
                             <div key={index}>
                                 <img src={img} alt={`Slide ${index + 1}`} />

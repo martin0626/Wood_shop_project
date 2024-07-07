@@ -59,14 +59,19 @@ export function loadPriceDescProducts(){
 };
 
 export function loadFilterProducts(filter){
-    let url = 'http://localhost:8000/api/products/'
+    let url = 'http://localhost:8000/api/products/filter?'
 
     Object.keys(filter).forEach(key => {
-        url = url + `?${key}=${filter[key]}`
+        let value = filter[key];
+        if(value != 'ALL' && value){
+            url = url + `${key}=${value}&`
+        }
     });
+
+    url = url.slice(0, url.length - 1)
 
     console.log(url);
     return async (dispatch)=>{
-        fetchProducts(dispatch, 'priceDesc');
+        fetchProducts(dispatch, url);
     }
 }
