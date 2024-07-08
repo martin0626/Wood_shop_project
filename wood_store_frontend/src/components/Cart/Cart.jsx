@@ -23,7 +23,11 @@ export default function CartComponent(){
     const handleCheckout = ()=>{
         if(cartContent.length > 0){
             onClose();
-            navigate('/checkout');
+            navigate('/checkout', {
+                state: {
+                    show: true,
+                }
+            });
         }
     }
 

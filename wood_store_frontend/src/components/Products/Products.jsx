@@ -40,7 +40,7 @@ export default function ProductsComponent({products}){
                         :
                     <section className={classes.productsSection}>
                         {
-                            products.map(product => <SingleProductComponent key={product.id} imgSrc={product.image} id={product.id} name={product.name} price={product.price}/>)
+                            products.map(product => <SingleProductComponent key={product.id} product={product}/>)
                         }
                     </section>
                 }

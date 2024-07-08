@@ -48,7 +48,7 @@ export default function Filter({onOpen}){
                 className={classes.filterElement}
             >   
                 <ul className={classes.filterLinks}>
-                    <li onClick={onOpen}>Filter<i className="material-icons">filter_list</i></li>
+                    <li className={classes.filterBtns} onClick={onOpen}>Filter<i className="material-icons">filter_list</i></li>
                     <div className={`${classes.sortSec}`}>
                         <motion.li 
                             onClick={showSortHandler}
@@ -56,6 +56,7 @@ export default function Filter({onOpen}){
                             initial={{ opacity: 1 }}
                             animate={{ x: isOpenSort ? 0 : 0 }}
                             transition={{ duration: 0.3 }}
+                            className={classes.filterBtns}
                         >
                             Sort{isOpenSort ? <i className="material-icons">first_page</i> : <i className="material-icons">chevron_right</i>}
                         </motion.li>
@@ -70,9 +71,9 @@ export default function Filter({onOpen}){
                                 exit={{ opacity: 0, height: 0 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <p onClick={handlePriceAscSort}>Price Asc.</p>
-                                <p onClick={handlePriceDescSort}>Price Desc.</p>
-                                <p onClick={handleClearSort}>Clear</p>
+                                <p className={classes.filterBtns} onClick={handlePriceAscSort}>Price Asc.</p>
+                                <p className={classes.filterBtns} onClick={handlePriceDescSort}>Price Desc.</p>
+                                <p className={classes.filterBtns} onClick={handleClearSort}>Clear</p>
 
                             </motion.div>
                         }  

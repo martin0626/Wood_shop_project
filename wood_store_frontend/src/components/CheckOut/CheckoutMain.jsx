@@ -10,7 +10,11 @@ export default function CheckoutMain(){
     const navigate = useNavigate();
     
     const handleProceed = ()=>{
-        navigate('/order')
+        navigate('/order', {
+            state: {
+                show: true,
+            }
+        })
     }
 
     return (

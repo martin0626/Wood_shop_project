@@ -23,7 +23,7 @@
 }
 
 
-.filterLinks li:hover, p:hover{
+.filterBtns:hover{
     cursor: pointer;
     color: #ffffffb7;
     transition: all 0.3s;

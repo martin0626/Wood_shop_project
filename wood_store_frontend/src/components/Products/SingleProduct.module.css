@@ -16,6 +16,7 @@
     height: 80%;
     overflow: hidden;
     border-bottom: 0px solid;
+    position: relative;
 }
 
 .productContainer::after {
@@ -48,16 +49,16 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -100%);
-    font-size: 3rem; /* Adjust the size as needed */
-    color: white; /* Adjust the color as needed */
+    font-size: 3rem; 
+    color: white; 
     opacity: 0;
     transition: opacity 0.5s ease;
     pointer-events: none;
 }
 
-.productContainer:hover::before {
+/* .productContainer:hover::before {
     opacity: 1;
-}
+} */
 
 
 .productImg img {
@@ -76,9 +77,57 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    transition: all 0.3s;
 }
 
 .cardPrice {
     font-size: 2rem;
     font-weight: bold;
+}
+
+.singlePrActions {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* display: none; */
+    display: flex !important;
+    gap: 2rem;
+    opacity: 0;
+    transition: all 0.3s;
+    background-color: #3333337e;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.singleAcVisible {
+    opacity: 1;
+}
+
+.singlePrActions > p > span{
+    font-size: 4rem;
+    color: #fff;
+    transition: all 0.5s;
+}
+
+.singlePrActions > p > span:hover {
+    cursor: pointer;
+    color: #ffffff94;
+}
+
+.hiddenContent {
+    display: none;
+}
+
+.showContent {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transition: all 0.3s;
+}
+
+.cardDescriptionSelected {
+    transform: translateY(-30%);
+    height: 40% !important;
 }
