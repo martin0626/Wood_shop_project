@@ -26,7 +26,7 @@ export default function DetailsDescription({product}){
 
     return(
         <div className={classes.description}>
-            <h1 className={classes.mainDescriptionText}>{product.description}</h1>
+            <h1 className={classes.mainDescriptionText}>{product.name}</h1>
             <div className={classes.detailsPrice}>
                 <a>Price: </a><a className={classes.mainDescriptionText}>{product.price}</a><a style={{color: '#fff'}}>BGN</a>
             </div>

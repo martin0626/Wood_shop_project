@@ -58,6 +58,7 @@
 
 .searchResults li{
     border-bottom: 1px solid #ffffff14;
+    padding-top: 6px;
     padding-bottom: 6px;
     letter-spacing: 1px;
     font-weight: bold;
