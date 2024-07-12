@@ -116,6 +116,7 @@ export default function OrderForm(){
             <OrderInput placeHolder={'test@example.com'} label={'Email'} inputId={'email'} errText={errors['email']} />
             <OrderInput placeHolder={'Mladost-4, bl.491'} label={'Address'} inputId={'address'} errText={errors['address']} />
             <OrderInput placeHolder={'08X XXX XXXX'} label={'Phone Number'} inputId={'phone'} errText={errors['phone']} />
+
             <div className={classes.btnOrder}>
                 <button className='defaultBtn'>Finish Order</button>
             </div>
