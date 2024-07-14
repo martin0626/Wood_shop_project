@@ -42,8 +42,8 @@ export default function SingleProductComponent({product}){
                 <div className={classes.productImg} > 
                     <img onClick={detailsHandler} src={product.image ? product.image : productImage} alt='Product image'/>
                     <div className={hoverEl ? `${classes.singlePrActions} ${classes.singleAcVisible}` : classes.singlePrActions}>
-                        <p onClick={detailsHandler}><span class="material-symbols-outlined">visibility</span></p>
-                        <p onClick={handleAddTocart}><span class="material-symbols-outlined">add_shopping_cart</span></p>
+                        <p onClick={detailsHandler}><span className="material-symbols-outlined">visibility</span></p>
+                        <p onClick={handleAddTocart}><span className="material-symbols-outlined">add_shopping_cart</span></p>
                     </div>
                 </div>
                 <div onClick={detailsHandler} className={hoverEl ? `${classes.cardDescription} ${classes.cardDescriptionSelected}` : classes.cardDescription}> 

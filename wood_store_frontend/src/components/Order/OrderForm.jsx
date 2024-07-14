@@ -44,7 +44,7 @@ function checkBulgarianPhoneNumber(str) {
 }
 
 
-const checkFormInput = (data)=>{
+const checkFormInput = (data, orderData)=>{
     let newErrors = {}
         
     Object.keys(data).forEach(key => {
@@ -81,7 +81,7 @@ const hasErrors = (errsObj)=>{
 
 
 
-export default function OrderForm(){
+export default function OrderForm({ onFormSubmit, orderData }){
 
     const [ errors, setErrors ] = useState(
         {
@@ -104,21 +104,21 @@ export default function OrderForm(){
         setErrors(errors);
 
         if(!hasErrors(errors)){
-            console.log(data);
+            onFormSubmit(data);
         }
 
     }
 
     return (
         <form onSubmit={formHandler} className={classes.orderForm}>
-            <OrderInput placeHolder={'Ivan'} label={'First Name'} inputId={'firstName'} errText={errors['firstName']} />
-            <OrderInput placeHolder={'Ivanov'} label={'Last Name'} inputId={'lastName'} errText={errors['lastName']} />
-            <OrderInput placeHolder={'test@example.com'} label={'Email'} inputId={'email'} errText={errors['email']} />
-            <OrderInput placeHolder={'Mladost-4, bl.491'} label={'Address'} inputId={'address'} errText={errors['address']} />
-            <OrderInput placeHolder={'08X XXX XXXX'} label={'Phone Number'} inputId={'phone'} errText={errors['phone']} />
+            <OrderInput defaultValue={orderData.firstName} placeHolder={'Ivan'} label={'First Name'} inputId={'firstName'} errText={errors['firstName']} />
+            <OrderInput defaultValue={orderData.lastName} placeHolder={'Ivanov'} label={'Last Name'} inputId={'lastName'} errText={errors['lastName']} />
+            <OrderInput defaultValue={orderData.email} placeHolder={'test@example.com'} label={'Email'} inputId={'email'} errText={errors['email']} />
+            <OrderInput defaultValue={orderData.address}  placeHolder={'Mladost-4, bl.491'} label={'Address'} inputId={'address'} errText={errors['address']} />
+            <OrderInput defaultValue={orderData.phone} placeHolder={'08X XXX XXXX'} label={'Phone Number'} inputId={'phone'} errText={errors['phone']} />
 
             <div className={classes.btnOrder}>
-                <button className='defaultBtn'>Finish Order</button>
+                <button className='defaultBtn'>Proceed</button>
             </div>
         </form>
     )

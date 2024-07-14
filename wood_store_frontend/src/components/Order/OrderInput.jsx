@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import classes from './OrderInput.module.css'
 
-export default function OrderInput({placeHolder, inputId, label, errText}){
+export default function OrderInput({placeHolder, inputId, label, errText, defaultValue}){
 
     const [selectedField, setSelectedField] = useState('');
 
@@ -20,8 +20,8 @@ export default function OrderInput({placeHolder, inputId, label, errText}){
                 {errText.length > 0 && <p className={classes.errMsg}>{errText}</p>}
 
             </div>
-            <label className={selectedField == inputId && classes.clicked} for={inputId}>{label}</label>
-            <input placeholder={placeHolder} onBlur={handleBlur} onFocus={handleFocus} type="text" id={inputId} name={inputId} required />
+            <label className={selectedField == inputId && classes.clicked} htmlFor={inputId}>{label}</label>
+            <input defaultValue={defaultValue} placeholder={placeHolder} onBlur={handleBlur} onFocus={handleFocus} type="text" id={inputId} name={inputId} required />
         </div>
     )
 }
