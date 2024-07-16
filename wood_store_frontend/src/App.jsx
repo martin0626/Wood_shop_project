@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import './App.css'
 import Root from './pages/RootPage'
-import Home from './pages/HomePage'
+import Home, { loader as homeLoader } from './pages/HomePage'
+
 import Products from './pages/ProductsPage'
 import { loader as productDetailsLoader } from './pages/ProductDetailsPage'
 import ProdDetails from './pages/ProductDetailsPage'
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home/>,
+        loader: homeLoader,
       },
       {
         path: 'products',

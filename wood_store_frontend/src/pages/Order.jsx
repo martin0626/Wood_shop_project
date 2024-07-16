@@ -1,14 +1,16 @@
 import { useLoaderData, useLocation, useNavigate } from "react-router";
 import Order from "../components/Order/OrderComponent";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../store/ui-slice";
+import { Await, defer } from 'react-router-dom'
+import LoadingUi from "../components/UI/LoadingUI";
+
 
 export default function OrderPage(){
     const { data } = useLoaderData();
     
 
-    console.log(data);
     const location = useLocation();
     const havePermission = location.state ? location.state.show : false;
     const navigate = useNavigate();
@@ -24,7 +26,11 @@ export default function OrderPage(){
     }, [havePermission, navigate])
 
     return (
-        <Order citiesData={data}/>
+        <Suspense fallback={<LoadingUi/>}>
+            <Await resolve={data}>
+                {(loadedData)=> <Order citiesData={loadedData.data}/>}
+            </Await>
+        </Suspense>
     )
 };
 
@@ -53,11 +59,8 @@ function setDataByRegions(data){
     return result;
 }
 
-
-export async function loader(){
-
+async function loadAllEcontData(){
     try {
-
         //ECONT API Get All Cities in Bulgaria - BGR
         let request = await fetch("http://ee.econt.com/services/Nomenclatures/NomenclaturesService.getCities.json", {
             method: "POST",
@@ -75,5 +78,15 @@ export async function loader(){
     }catch(err){
         return err;
     }
+}
+
+
+export async function loader(){
+    return defer({
+        data: loadAllEcontData(),
+    })
+
+
+    
     
 } 

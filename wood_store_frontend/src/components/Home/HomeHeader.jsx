@@ -1,11 +1,11 @@
-import classes from "./HomeSlider.module.css"
+import classes from "./HomeHeader.module.css"
 import { motion } from 'framer-motion'
 import interiorImg from '../../assets/interior.jpg'
 import exteriorImg from '../../assets/exterior.jpg'
 
 
 
-export default function HomeSlider(){
+export default function HeaderHome(){
     return (
             <motion.div 
                 initial={{opacity:0, y: -300}} 
