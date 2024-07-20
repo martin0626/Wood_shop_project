@@ -1,5 +1,5 @@
 .topSection {
-  margin-top: 52rem;
+  margin-top: 32rem;
   height: 100vH;
   display: flex;
   justify-content: center;
@@ -54,6 +54,8 @@
     color: #fcc419 !important;
   }
 
+
+
   .descriptionTopPr {
     background-color: #fcc419;
     display: flex;
@@ -65,6 +67,7 @@
     border-radius: 0px 0px 6px 6px;
     font-size: 1.6rem;
     font-weight: bold;
+    color: #333;
   }
 
   .imageCard {

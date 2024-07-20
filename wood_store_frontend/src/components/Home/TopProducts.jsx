@@ -1,6 +1,6 @@
 import Slider from "react-slick";
 import classes from "./TopProducts.module.css"
-import SingleProductComponent from "../Products/SingleProduct";
+import { useNavigate } from "react-router";
 
 export default function TopProducts({products}){
     const settings = {
@@ -10,6 +10,12 @@ export default function TopProducts({products}){
         slidesToShow: 3,
         slidesToScroll: 1
     };
+
+    const navigate = useNavigate();
+
+    const handleProductSelect = (id)=>{
+        navigate('products/' + id);
+    }
 
     return (
         <section className={classes.topSection}>
@@ -21,7 +27,7 @@ export default function TopProducts({products}){
                     <Slider  {...settings} className="image-slider">
                             {products.map((product) => (
                                 
-                                <div className={classes.cardTop} key={product.id}>
+                                <div onClick={()=>handleProductSelect(product.id)} className={classes.cardTop} key={product.id}>
                                     <div className={classes.imageCard}>
                                         <img src='https://i.etsystatic.com/15705690/r/il/33dc60/1843727366/il_fullxfull.1843727366_flps.jpg' alt="product IMG" />
                                     </div>

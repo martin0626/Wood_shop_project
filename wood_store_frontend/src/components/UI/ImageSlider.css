@@ -51,3 +51,7 @@
 .backdrop:hover {
   cursor: pointer;
 }
+
+.slick-list{
+  text-align: center !important;
+}

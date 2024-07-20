@@ -1,10 +1,10 @@
-import classes from "./HomeInfoElement.module.css"
+import classes from "./HomeInfoLeft.module.css"
 import { motion } from 'framer-motion'
 import interiorImg from '../../assets/interior.jpg'
 
 
 
-export default function InfoElement(){
+export default function InfoElementLeft({data}){
     return (
             <motion.div 
                 initial={{opacity:0, y: -300}} 
@@ -12,15 +12,12 @@ export default function InfoElement(){
                 transition={{delay: 0.5}} 
                 className={classes.infoContent}
             >   
+                <div className={classes.infoImgLeft}>
+                    <img src={data.img} alt='Interior with wood table'/>   
+                </div>
                 <div className={classes.infoText}>
-                    <h1>Wood is the best material for interior and exterior.</h1>  
+                    <p>{data.text}</p>  
                 </div>
-                
-                <div className={classes.infoImg}>
-                    <img src={interiorImg} alt='Interior with wood table'/>   
-                </div>
-
-
             </motion.div>
     )
 

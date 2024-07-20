@@ -1,0 +1,35 @@
+.infoContent {
+    padding: 2rem 6rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    background-color: #00000062;
+    width: 60%;
+    border-radius: 6px;
+    color: #fff;
+    margin-top: 12rem;
+}
+
+.infoImgLeft img {
+    height: 32rem;
+    width: 32rem;
+    border-radius: 6px;
+    transform: rotate(-5deg) translate(-9%, 0px);
+}
+
+.infoImgRight img {
+    height: 32rem;
+    width: 32rem;
+    border-radius: 6px;
+    transform: rotate(5deg) translate(-2%, 0px);
+}
+
+.infoText {
+    font-size: 1.8rem;
+    text-indent: 1%;
+    line-height: 2rem;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    margin-top: 5rem;
+}

@@ -4,6 +4,10 @@ import HeaderHome from "../components/Home/HomeHeader";
 import TopProducts from '../components/Home/TopProducts';
 import { Suspense } from "react";
 import LoadingUi from '../components/UI/LoadingUI';
+import InfoElement from '../components/Home/HomeInfoLeft';
+import InfoElementLeft from '../components/Home/HomeInfoLeft';
+import InfoElementRight from '../components/Home/HomeInfoRight';
+import InfoComponents from '../components/Home/InfoComponents';
 
 
 export default function Home(){
@@ -20,6 +24,9 @@ export default function Home(){
                 </Await>
                 
             </Suspense>
+            <InfoComponents/>
+            {/* <InfoElementLeft/>
+            <InfoElementRight/> */}
         </>
     )
 };
