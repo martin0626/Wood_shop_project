@@ -57,18 +57,36 @@
     position: relative;
 }
 
-.resultList {
+.inputSearchSec {
     position: absolute;
     width: 100%;
     list-style: none;
     top: 103%;
-    max-height: 14rem;
-    overflow-y: auto;
-    background-color: #333;
+    max-height: 20rem;
+    background-color: #333333cc;
     border-radius: 6px;
     font-size: 1.3rem;
     letter-spacing: 1px;
     font-weight: bold;
+}
+
+.inputSearchSec input {
+    margin-top: 4px !important;
+    display: block;
+    width: 60%;
+    padding: 0.6rem;
+    border-radius: 6px;
+    outline: none;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.resultList {
+    overflow-y: auto;
+    min-height: 3rem;
+    max-height: 12rem;
 }
 
 .iconAddress {
@@ -114,3 +132,5 @@
     gap: 2rem;
     margin-bottom: 2rem;
 }
+
+

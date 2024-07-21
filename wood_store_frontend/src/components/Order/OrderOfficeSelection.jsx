@@ -39,6 +39,7 @@ export default function OfficeSelection({citiesData, handleChangeView, onAddress
     //Cities Controller
     const [ cities, setCities ] = useState(citiesData[DEFAULT_REGION]);
     const [ currentCities, setCurrentCities ] = useState(cities);
+    const [ city, setCity ] = useState('');
     const cityInput = useRef()
 
 
@@ -51,6 +52,7 @@ export default function OfficeSelection({citiesData, handleChangeView, onAddress
 
     //Address Contorller
     const [allAddress, setAllAddress] = useState([]);
+    const [ address, setAddress ] = useState('')
     const addressInput = useRef()
 
     
@@ -63,6 +65,9 @@ export default function OfficeSelection({citiesData, handleChangeView, onAddress
         setCurrentRegions([reg])
         cityInput.current.value = '';
         addressInput.current.value = '';
+        setSelectedInput('');
+        setCity('');
+        setAddress('');
 
     };
 
@@ -80,6 +85,8 @@ export default function OfficeSelection({citiesData, handleChangeView, onAddress
         setCurrentCities([currCity]);
         let address = await loadAddresses(city.id);
         addressInput.current.value = '';
+        setCity(city.name)
+        setAddress('');
 
 
         if(address){
@@ -97,15 +104,16 @@ export default function OfficeSelection({citiesData, handleChangeView, onAddress
 
 
     const handleSelectAddress = (address)=>{
-        addressInput.current.value = address;
+        setAddress(address);
     }
 
-    const handleFocusInput = (e)=>{
-        let inputId = e.target.id;
+    const handleFocusInput = (inputId)=>{
         let timer = setTimeout(()=>{
             setSelectedInput(inputId);
           }, 100);
-  
+
+        setCurrentRegions(allRegions);
+        setCurrentCities(cities);
         return () => clearTimeout(timer);
     }
 
@@ -139,15 +147,16 @@ export default function OfficeSelection({citiesData, handleChangeView, onAddress
                     <input 
                         autocomplete="false" 
                         onBlur={handleBlurInput} 
-                        onFocus={handleFocusInput} 
+                        onFocus={()=>{handleFocusInput('region')}} 
                         className={classes.standartInput} 
                         ref={regionInput}  
-                        onChange={onChangeRegion} 
-                        defaultValue={region} 
+                        
+                        // defaultValue={region} 
                         id="region" 
                         name="region" 
                         type='select'
                         required
+                        value={region}
                     />
                     <div className={classes.iconAddress}>
                         <span class="material-symbols-outlined">arrow_drop_down</span>
@@ -157,13 +166,16 @@ export default function OfficeSelection({citiesData, handleChangeView, onAddress
                             
                         &&
 
-                        <ul className={classes.resultList}>
-                            {currentRegions.map(region=>{
-                                if(region != ''){
-                                    return <li onClick={()=>handleSelectRegion(region)}>{region}</li>
-                                }
-                            })}
-                        </ul>
+                        <div className={classes.inputSearchSec}>
+                            <input type="search" onBlur={handleBlurInput} onFocus={()=>{handleFocusInput('region')}} onChange={onChangeRegion}  />
+                            <ul className={classes.resultList}>
+                                {currentRegions.map(region=>{
+                                    if(region != ''){
+                                        return <li onClick={()=>handleSelectRegion(region)}>{region}</li>
+                                    }
+                                })}
+                            </ul>
+                        </div>
                     }         
                 </div>
 
@@ -171,13 +183,13 @@ export default function OfficeSelection({citiesData, handleChangeView, onAddress
                     <label className={selectedInput === 'city' && classes.clicked} htmlFor="city">City</label>
                     <input 
                         onBlur={handleBlurInput} 
-                        onFocus={handleFocusInput} 
+                        onFocus={()=>{handleFocusInput('city')}} 
                         className={classes.standartInput} 
                         ref={cityInput}  
-                        onChange={onChangeCity} 
                         id="city" 
                         name="city" 
                         required 
+                        value={city}
                     />
                     <div className={classes.iconAddress}>
                         <span class="material-symbols-outlined">arrow_drop_down</span>
@@ -187,11 +199,16 @@ export default function OfficeSelection({citiesData, handleChangeView, onAddress
                             
                         &&
 
-                        <ul className={classes.resultList}>
-                            {currentCities && currentCities.map(city=>{
-                                return <li onClick={()=>handleSelectCity(city)}>{city.name}</li>
-                            })}
-                        </ul>
+                        <div className={classes.inputSearchSec}>
+                            <input type="search" onBlur={handleBlurInput} onFocus={()=>{handleFocusInput('city')}} onChange={onChangeCity}  />
+                            <ul className={classes.resultList}>
+                                {currentCities && currentCities.map(city=>{
+                                    return <li onClick={()=>handleSelectCity(city)}>{city.name}</li>
+                                })}
+                            </ul>
+                        </div>
+
+                        
                    }
 
                    
@@ -203,10 +220,11 @@ export default function OfficeSelection({citiesData, handleChangeView, onAddress
                     <input 
                         className={classes.standartInput} 
                         onBlur={handleBlurInput} 
-                        onFocus={handleFocusInput} 
+                        onFocus={()=>{handleFocusInput('address')}} 
                         ref={addressInput} 
                         id="address" 
                         name="address" 
+                        value={address}
                         required
                     />
                     <div className={classes.iconAddress}>
@@ -216,12 +234,17 @@ export default function OfficeSelection({citiesData, handleChangeView, onAddress
                         selectedInput === 'address' 
                         
                         &&
-
-                        <ul className={classes.resultList}>
-                            {allAddress && allAddress.map(address=>{
-                                return <li onClick={()=>handleSelectAddress(address)}>{address}</li>
-                            })}
-                        </ul>
+                        
+                        <div className={classes.inputSearchSec}>
+                            <ul className={classes.resultList}>
+                                {allAddress && allAddress.map(address=>{
+                                    return <li onClick={()=>handleSelectAddress(address)}>{address}</li>
+                                })}
+                            </ul>
+                        </div>
+                        
+                    
+                        
                     }
                 </div>   
             </div>

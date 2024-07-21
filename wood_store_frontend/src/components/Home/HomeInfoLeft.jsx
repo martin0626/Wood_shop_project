@@ -1,16 +1,32 @@
-import classes from "./HomeInfoLeft.module.css"
-import { motion } from 'framer-motion'
-import interiorImg from '../../assets/interior.jpg'
+import { useEffect, useRef } from "react"
+import classes from "./HomeInfo.module.css"
+import { motion, useAnimation, useInView } from 'framer-motion'
 
 
 
 export default function InfoElementLeft({data}){
+
+    const ref = useRef(null);
+    const inView = useInView(ref, {once: false});
+    const mainControls = useAnimation()
+
+    useEffect(()=>{
+        if(inView){
+            mainControls.start('visible')
+        }
+    }, [inView])
+
     return (
             <motion.div 
-                initial={{opacity:0, y: -300}} 
-                animate={{opacity: 1, y: 0}} 
-                transition={{delay: 0.5}} 
+                variants={{
+                    hidden: {opacity: 0, x: 750},
+                    visible: {opacity: 1, x: 0 }
+                }}
+                initial="hidden"
+                animate={mainControls}
+                transition={{duration: 0.5, delay: 0.25}} 
                 className={classes.infoContent}
+                ref={ref}
             >   
                 <div className={classes.infoImgLeft}>
                     <img src={data.img} alt='Interior with wood table'/>   

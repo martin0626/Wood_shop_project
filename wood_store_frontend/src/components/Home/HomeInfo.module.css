@@ -9,6 +9,11 @@
     border-radius: 6px;
     color: #fff;
     margin-top: 12rem;
+    transition: all 0.3s;
+}
+
+.infoContent:hover {
+    transform: translateY(-2%) !important;
 }
 
 .infoImgLeft img {
