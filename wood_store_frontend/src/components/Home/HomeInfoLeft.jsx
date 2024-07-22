@@ -13,6 +13,8 @@ export default function InfoElementLeft({data}){
     useEffect(()=>{
         if(inView){
             mainControls.start('visible')
+        }else{
+            mainControls.start('hidden')
         }
     }, [inView])
 
@@ -24,7 +26,7 @@ export default function InfoElementLeft({data}){
                 }}
                 initial="hidden"
                 animate={mainControls}
-                transition={{duration: 0.5, delay: 0.25}} 
+                transition={{duration: 0.1, delay: 0.1}} 
                 className={classes.infoContent}
                 ref={ref}
             >   

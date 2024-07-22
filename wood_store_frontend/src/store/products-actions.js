@@ -4,6 +4,7 @@ const productAPIMapper = {
     'products': 'http://localhost:8000/api/products',
     'priceAsc': 'http://localhost:8000/api/products/sort/price/asc',
     'priceDesc': 'http://localhost:8000/api/products/sort/price/desc',
+    'mostOrdered': 'http://localhost:8000/api/products/sort/favorites',
 }
 
 
@@ -53,6 +54,13 @@ export function loadPriceAscProducts(){
 
 export function loadPriceDescProducts(){
     const url = productAPIMapper['priceDesc'];
+    return async (dispatch)=>{
+        fetchProducts(dispatch, url);
+    }
+};
+
+export function loadMostOrdered(){
+    const url = productAPIMapper['mostOrdered'];
     return async (dispatch)=>{
         fetchProducts(dispatch, url);
     }

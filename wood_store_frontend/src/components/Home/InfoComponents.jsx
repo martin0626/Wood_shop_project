@@ -1,5 +1,6 @@
 import InfoElementLeft from "./HomeInfoLeft"
 import InfoElementRight from "./HomeInfoRight"
+import classes from "./InfoComponents.module.css"
 
 export default function InfoComponents(){
 
@@ -24,7 +25,7 @@ export default function InfoComponents(){
     ]
 
     return (
-        <div>
+        <div className={classes.infoContainer}>
             {myInitialInfoElements.map((el, index)=>{
                 if(index % 2 === 0){
                     return <InfoElementLeft data={el}/>

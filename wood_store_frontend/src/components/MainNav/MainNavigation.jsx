@@ -1,15 +1,20 @@
 import { NavLink } from "react-router-dom"
 import classes from './MainNavigation.module.css'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
 import { useDispatch, useSelector } from "react-redux"
 import { uiActions } from "../../store/ui-slice"
 import NavSearch from "./NavSearch"
+import { useEffect, useRef, useState } from "react"
 
 export default function MainNavigation(){
 
     const cartQuantity = useSelector((state)=> state.cart.totalQuantity)
     const dispatch = useDispatch();
+    const [numKey, setNumKey] = useState(0)
 
+    useEffect(()=>{
+        setNumKey(numKey + 1);
+    }, [cartQuantity])
 
     const handleOpenCart = ()=>{
         dispatch(uiActions.openCart())
@@ -24,7 +29,19 @@ export default function MainNavigation(){
                     <NavLink to='products' className={({isActive})=> isActive ? `${classes.active} ${classes.navLink}` : classes.navLink} end>Products</NavLink>
                     <div className={classes.cartItem}>
                         <a onClick={handleOpenCart} className={classes.navLink}>Cart</a>
-                        <a className={classes.cartNum}>{cartQuantity}</a>
+                        <motion.a 
+                            className={classes.cartNum} 
+                            variants={{
+                                up: { y: -6},
+                                normal: { y: 0 }
+                            }}
+                            initial={'up'}
+                            animate={'normal'}
+                            transition={{duration: 0.3}} 
+                            key={numKey}
+                        >
+                            {cartQuantity}
+                        </motion.a>
                     </div>
                 </div>
                 <NavSearch/>

@@ -2,7 +2,7 @@ import { useState } from "react"
 import classes from "./Filter.module.css"
 import { motion } from 'framer-motion'
 import { useDispatch } from "react-redux";
-import { loadAllProducts, loadPriceAscProducts, loadPriceDescProducts } from "../../store/products-actions";
+import { loadAllProducts, loadMostOrdered, loadPriceAscProducts, loadPriceDescProducts } from "../../store/products-actions";
 import { uiActions } from "../../store/ui-slice";
 
 
@@ -23,6 +23,11 @@ export default function Filter({onOpen}){
     const showSortHandler = ()=>{
         setisOpenSort(!isOpenSort);
     }
+
+    const handleMostOrderedSort = ()=>{
+        dispatch(loadMostOrdered());
+        setLoadingUi()
+    };
 
     const handlePriceAscSort = ()=>{
         dispatch(loadPriceAscProducts());
@@ -71,6 +76,7 @@ export default function Filter({onOpen}){
                                 exit={{ opacity: 0, height: 0 }}
                                 transition={{ duration: 0.3 }}
                             >
+                                <p className={classes.filterBtns} onClick={handleMostOrderedSort}>Most Ordered</p>
                                 <p className={classes.filterBtns} onClick={handlePriceAscSort}>Price Asc.</p>
                                 <p className={classes.filterBtns} onClick={handlePriceDescSort}>Price Desc.</p>
                                 <p className={classes.filterBtns} onClick={handleClearSort}>Clear</p>
