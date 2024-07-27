@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import classes from './OrderForm.module.css'
 import OrderInput from './OrderInput';
+import { checkBulgarianPhoneNumber, checkEmail, checkLen } from '../../utils/InputCheckers';
 
 
 const inputValidationMapper = {
@@ -9,39 +10,9 @@ const inputValidationMapper = {
     'email': [checkEmail],
     'address': [checkLen],
     'phone': [checkBulgarianPhoneNumber],
-
-}
-
-function checkLen(str){
-    const minLen = 3;
-
-    if(str.length < minLen){
-        return `Length must be at least ${minLen} chars!`;
-    };
-
-    return false;
-}
-
-function checkEmail(str){
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if(!emailRegex.test(str)){
-        return 'Incorrect email address!'
-    }
-
-    return false;
 }
 
 
-function checkBulgarianPhoneNumber(str) {
-    // Regular expression for Bulgarian phone number validation
-    const phoneRegex = /^(0[1-9]\d{7}|08[7-9]\d{7})$/;
-    if(!phoneRegex.test(str)){
-        return 'Incorrect phone number!'
-    }
-
-    return false;
-}
 
 
 const checkFormInput = (data, orderData)=>{

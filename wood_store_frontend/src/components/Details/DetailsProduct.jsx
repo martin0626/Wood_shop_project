@@ -3,12 +3,21 @@ import classes from './DetailsProduct.module.css'
 import { motion } from 'framer-motion'
 import DetailsGellery from './DetailsGallery'
 import DetailsDescription from './DetailsDescription'
+import { useEffect, useRef } from 'react'
+
 
 
 
 export default function DetailsProduct({product}){
+    const topElement = useRef()
+
+    useEffect(()=>{
+        topElement.current.scrollIntoView({ behavior: 'smooth' })
+    }, [])
+
     return (
         <motion.div 
+            ref={topElement}
             className={classes.mainDetailElement}
             initial={{opacity:0}} 
             animate={{opacity: 1}} 

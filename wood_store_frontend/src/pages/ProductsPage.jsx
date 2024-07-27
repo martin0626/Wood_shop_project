@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import ProductsComponent from "../components/Products/Products";
 import { Await, useSearchParams } from 'react-router-dom'
 import Filter from "../components/Products/Filter";
@@ -11,6 +11,7 @@ export default function Products(){
     const [ searchParams ] = useSearchParams();
     const name = searchParams.get('name');
     const dispatch = useDispatch();
+    const topElement = useRef()
 
     let products = useSelector(state => state.products.products);
     let filteredProducts = [];
@@ -22,8 +23,14 @@ export default function Products(){
 
     products = filteredProducts.length > 0 ? filteredProducts : products;
 
+    
+
+    useEffect(()=>{
+        topElement.current.scrollIntoView({ behavior: 'smooth' })
+    }, [])
+
     return (
-        <div>
+        <div ref={topElement}>
             <Suspense fallback={
             <div style={{margin: '0rem 12rem 0rem 12rem'}}>
                 <Filter onOpen={()=>{}}/>

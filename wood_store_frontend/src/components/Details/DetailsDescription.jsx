@@ -54,7 +54,6 @@ export default function DetailsDescription({product}){
             </div>
             <div className={classes.detailsBtnGr}>
                 <button onClick={handleAddTocart}>Add to cart</button>
-                <button>Buy</button>
             </div>
         </div>
     )

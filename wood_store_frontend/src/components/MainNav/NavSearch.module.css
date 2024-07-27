@@ -33,6 +33,7 @@
 }
 
 .searchIconSelected:hover{
+    cursor: pointer;
     color: #ffffff6c;
 }
 

@@ -1,6 +1,4 @@
 import classes from './DetailsGallery.module.css'
-import productImage from '../../assets/interior.jpg'
-import productImage2 from '../../assets/exterior.jpg'
 import { useState } from 'react'
 import ImageSlider from '../UI/ImageSlider'
 

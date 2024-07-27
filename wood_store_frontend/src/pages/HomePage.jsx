@@ -2,21 +2,23 @@ import { Await, defer, json } from 'react-router-dom'
 import { useLoaderData } from "react-router";
 import HeaderHome from "../components/Home/HomeHeader";
 import TopProducts from '../components/Home/TopProducts';
-import { Suspense } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import LoadingUi from '../components/UI/LoadingUI';
-import InfoElement from '../components/Home/HomeInfoLeft';
-import InfoElementLeft from '../components/Home/HomeInfoLeft';
-import InfoElementRight from '../components/Home/HomeInfoRight';
 import InfoComponents from '../components/Home/InfoComponents';
 
 
 export default function Home(){
     const { products } = useLoaderData();
 
+    const topElement = useRef()
+
+    useEffect(()=>{
+        topElement.current.scrollIntoView({ behavior: 'smooth' })
+    }, [])
     console.log(products);
 
     return (
-        <>
+        <div ref={topElement}>
             <HeaderHome/>
             <Suspense fallback={LoadingUi}>
                 <Await resolve={products}>
@@ -27,7 +29,7 @@ export default function Home(){
             <InfoComponents/>
             {/* <InfoElementLeft/>
             <InfoElementRight/> */}
-        </>
+        </div>
     )
 };
 

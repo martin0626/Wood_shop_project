@@ -1,0 +1,31 @@
+.footerNav {
+    display: flex;
+    gap:10%;
+    flex-direction: column;
+}
+
+
+.mapLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.mapLinks > a{
+    text-decoration: none;
+    list-style: none;
+    padding: 4px 6px;
+    transition: all 0.3s;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.mapLinks > a:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 2px #fcc9b1b8;;
+    border-radius: 6px;
+    color: #ffffffbe;
+}

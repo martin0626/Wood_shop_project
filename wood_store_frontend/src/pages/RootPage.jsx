@@ -6,6 +6,7 @@ import CartComponent from "../components/Cart/Cart";
 import { AnimatePresence } from "framer-motion";
 import Notification from "../components/UI/NotificationComp";
 import { getCartOnLoad } from "../store/cart-actions";
+import FooterComp from "../components/Footer/FooterComponent";
 
 export default function Root(){
     const isCartOpen = useSelector((state)=> state.ui.cartIsOpen)
@@ -22,6 +23,7 @@ export default function Root(){
         <section className={classes.mainSection}>
             <Outlet />
         </section>
+        <FooterComp/>
     </>
-    );
+    )
 };

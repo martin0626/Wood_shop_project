@@ -1,0 +1,31 @@
+.footerContact {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footerContact h1 {
+    margin-bottom: 10%;
+}
+
+
+.contactSingle > img {
+    height: 16px;
+    width: 16px;
+}
+
+.contactSingle{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #ffffffbe;
+    padding: 4px 6px;
+    transition: all 0.3s;
+}
+
+
+.contactSingle:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 2px #fcc9b1b8;;
+    border-radius: 6px;
+}

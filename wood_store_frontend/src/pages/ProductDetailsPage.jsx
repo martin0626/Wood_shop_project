@@ -9,6 +9,8 @@ export default function ProdDetails(){
 
     const {product} = useLoaderData();
 
+    
+
     return (
         <Suspense fallback={
             <LoadingUi/>

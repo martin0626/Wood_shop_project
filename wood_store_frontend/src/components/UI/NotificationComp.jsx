@@ -18,7 +18,7 @@ export default function Notification(){
     useEffect(()=>{
         let timer = setTimeout(()=>{
             dispatch(uiActions.removeNotification());
-        }, 3000);
+        }, 4000);
 
         return ()=> clearTimeout(timer)
     }, [])
