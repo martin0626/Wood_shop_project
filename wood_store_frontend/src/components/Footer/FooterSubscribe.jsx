@@ -27,10 +27,13 @@ export default function Subscribe(){
         const email = inputElement.current.value;
         const emailError = checkEmail(email);
 
-        if(!emailError){
-            dispach(uiActions.setGreenNotification({message: `Now You are subscribed for our top offers.`, header: 'Succesfully Subscription' }))
-        }else{
-            dispach(uiActions.setErrNotification({message: `This Email Address "${email}" is invalid!`, header: 'Invalid Subscription' }))
+        
+        if(email.trim() !== ''){
+            if(!emailError){
+                dispach(uiActions.setGreenNotification({message: `Now You are subscribed for our top offers.`, header: 'Succesfully Subscription' }))
+            }else{
+                dispach(uiActions.setErrNotification({message: `This Email Address "${email}" is invalid!`, header: 'Invalid Subscription' }))
+            }
         }
     }
 

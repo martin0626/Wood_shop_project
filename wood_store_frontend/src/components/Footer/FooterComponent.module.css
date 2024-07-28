@@ -1,4 +1,5 @@
 .footerContainer{
+    min-height: 22vh;
     bottom: 0;
     width: 100%;
     background-color: #000000b9;

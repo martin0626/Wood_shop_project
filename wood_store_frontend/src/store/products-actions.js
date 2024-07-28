@@ -78,6 +78,7 @@ export function loadFilterProducts(filter){
 
     url = url.slice(0, url.length - 1)
 
+    
     console.log(url);
     return async (dispatch)=>{
         fetchProducts(dispatch, url);

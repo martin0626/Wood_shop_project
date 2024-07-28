@@ -53,6 +53,7 @@
 }
 
 .materialOptions {
+    padding: 1rem;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     row-gap: 2rem;
@@ -61,4 +62,100 @@
 .materialOptions div{
     display: flex;
     gap:0.5rem;
+}
+
+.priceContent {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.otherContent {
+    width: 22rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+}
+
+.otherContent input, li{
+    text-transform: lowercase;
+}
+
+.otherContent input::first-line, li::first-letter{
+    text-transform: capitalize;
+}
+
+.otherContent input {
+    background-color: #1f1f1f;
+    border: 1px solid #ffffff3b;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    width: 22rem;
+    margin-top: 1rem;
+}
+
+
+.otherContent input:focus-visible{
+    outline: none !important;
+}
+
+
+.resultList {
+    overflow-y: auto;
+    min-height: 3rem;
+    max-height: 12rem;
+}
+
+.otherIcon {
+    position: absolute;
+    top: 41%;
+    right: 0;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.otherIcon:hover{
+    cursor: pointer;
+    color: #ffffff9a;
+}
+
+.otherContent label {
+    position: absolute;
+    background-color: #1f1f1f;
+    padding: 0.5rem;
+    top: 5%;
+    left: 11%;
+}
+
+.otherOptions {
+    background-color: #1f1f1f;
+    border: 1px solid #ffffff3b;
+    width: 22rem;
+    padding: 1rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 82%;
+    transition: all 0.3s;
+
+}
+
+
+.otherOptions > li {
+    width: 100%;
+    height: 2rem;
+    transition: all 0.3s;
+}
+
+.otherOptions > li:hover {
+    cursor: pointer;
+    border-bottom: 1px solid #ffffff3b;
+    color: #ffffffaf;
 }

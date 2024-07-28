@@ -24,3 +24,8 @@ html {
   font-size: 62.5%;
   overflow-x: hidden;
 }
+
+
+input[type="checkbox"] {
+  transform: scale(1.5);
+}
