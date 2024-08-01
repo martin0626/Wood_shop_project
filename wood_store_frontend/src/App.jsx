@@ -14,6 +14,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useDispatch } from 'react-redux'
 import { loadAllProducts } from './store/products-actions'
 import OrderPage, { loader as orderLoader } from './pages/Order'
+import ErrorPage from './pages/Error'
 
 
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root/>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         index: true,
