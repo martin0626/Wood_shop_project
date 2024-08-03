@@ -8,7 +8,7 @@ const productAPIMapper = {
 }
 
 
-async function fetchProducts(dispatch, url){
+async function fetchProducts(dispatch, url, isSorted = false){
     
         async function loadProducts(){
             const response = await fetch(url);
@@ -27,7 +27,7 @@ async function fetchProducts(dispatch, url){
 
         try{
             const prodData = await loadProducts();  
-            dispatch(productsActions.replaceProducts({products: prodData}));
+            dispatch(productsActions.replaceProducts({products: prodData, isSorted}));
         }catch(err){
             //TODO UI Message for errors and others 
             return [
@@ -48,21 +48,21 @@ export function loadAllProducts(){
 export function loadPriceAscProducts(){
     const url = productAPIMapper['priceAsc'];
     return async (dispatch)=>{
-        fetchProducts(dispatch, url);
+        fetchProducts(dispatch, url, true);
     }
 };
 
 export function loadPriceDescProducts(){
     const url = productAPIMapper['priceDesc'];
     return async (dispatch)=>{
-        fetchProducts(dispatch, url);
+        fetchProducts(dispatch, url, true);
     }
 };
 
 export function loadMostOrdered(){
     const url = productAPIMapper['mostOrdered'];
     return async (dispatch)=>{
-        fetchProducts(dispatch, url);
+        fetchProducts(dispatch, url, true);
     }
 };
 
@@ -81,6 +81,6 @@ export function loadFilterProducts(filter){
     
     console.log(url);
     return async (dispatch)=>{
-        fetchProducts(dispatch, url);
+        fetchProducts(dispatch, url, true);
     }
 }

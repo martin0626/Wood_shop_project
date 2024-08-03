@@ -2,19 +2,20 @@ import { useEffect } from 'react'
 import './App.css'
 import Root from './pages/RootPage'
 import Home, { loader as homeLoader } from './pages/HomePage'
-
 import Products from './pages/ProductsPage'
 import { loader as productDetailsLoader } from './pages/ProductDetailsPage'
 import ProdDetails from './pages/ProductDetailsPage'
 import Checkout from './pages/CheckOutPage'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-//Slick
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useDispatch } from 'react-redux'
 import { loadAllProducts } from './store/products-actions'
 import OrderPage, { loader as orderLoader } from './pages/Order'
 import ErrorPage from './pages/Error'
+import Admin, { action as authAction } from './pages/AdminPage'
+
+//Slick
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 
@@ -46,6 +47,11 @@ const router = createBrowserRouter([
         path: 'order',
         element: <OrderPage/>,
         loader: orderLoader,
+      },
+      {
+        path: 'admin',
+        element: <Admin/>,
+        action: authAction,
       },
     ]
   }

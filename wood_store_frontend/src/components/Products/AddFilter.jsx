@@ -2,7 +2,7 @@ import classes from "./AddFilter.module.css"
 import ModalComponent from "../UI/ModalComponent"
 import { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { loadFilterProducts } from "../../store/products-actions"
+import { loadAllProducts, loadFilterProducts } from "../../store/products-actions"
 import { uiActions } from "../../store/ui-slice";
 import { filterActions } from "../../store/filter-slice"
 
@@ -19,7 +19,6 @@ export default function AddFilter({onClose}){
     const [ currentPrice, setCurrentPrice ] = useState(currentFilter.price);
     const dispatch = useDispatch();
 
-    console.log(currentFilter);
 
     const setLoadingUi = (time)=>{
         dispatch(uiActions.setLoading());
@@ -62,13 +61,9 @@ export default function AddFilter({onClose}){
 
     const handleClearFilter = ()=>{
         setLoadingUi(1000);
-        dispatch(loadFilterProducts({
-            price: MAX_PRICE,
-            category: 'ALL',
-        }));
+        dispatch(loadAllProducts());
         dispatch(filterActions.resetFilter());
         onClose();
-
     };
 
     const handleSelectOtherOption = (option)=>{

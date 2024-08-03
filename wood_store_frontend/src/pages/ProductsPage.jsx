@@ -5,13 +5,16 @@ import Filter from "../components/Products/Filter";
 import LoadingUi from "../components/UI/LoadingUI";
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../store/ui-slice";
+import FilterPin from "../components/Products/ClearFilterPin";
 
 export default function Products(){
 
     const [ searchParams ] = useSearchParams();
     const name = searchParams.get('name');
     const dispatch = useDispatch();
-    const topElement = useRef()
+    const topElement = useRef();
+
+    const isSorted =  useSelector(state => state.products.isSorted);
 
     let products = useSelector(state => state.products.products);
     let filteredProducts = [];
@@ -31,12 +34,14 @@ export default function Products(){
 
     return (
         <div ref={topElement}>
+            {isSorted && <FilterPin/>}
             <Suspense fallback={
             <div style={{margin: '0rem 12rem 0rem 12rem'}}>
                 <Filter onOpen={()=>{}}/>
                 <LoadingUi/>
             </div>}>
                 <Await resolve={products}>
+                    
                     {(loadedProducts) => <ProductsComponent products={loadedProducts}/>}
                 </Await>
             </Suspense>
