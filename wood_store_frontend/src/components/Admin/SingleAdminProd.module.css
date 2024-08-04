@@ -1,0 +1,15 @@
+.productDiv {
+    padding: 1rem;
+    height: 4rem;
+    border-radius: 6px;
+    border: 1px solid #ffffff3b;
+    transition: all 0.3s;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    background-color: #000000c7;
+}
+
+.productDiv:hover {
+    box-shadow: 0px 0px 6px 1px #f5f5f550;
+    cursor: pointer;
+}

@@ -20,7 +20,7 @@ export default function FooterNav(){
                 <NavLink to={'/'}>Home</NavLink>
                 <NavLink to={'/products'}>Products</NavLink>
                 <NavLink to={pathname} onClick={handleOpenCart}>Cart</NavLink>
-                <NavLink to={'/admin'}>Admin</NavLink>
+                <NavLink to={'/adminAuth'}>Admin</NavLink>
             </div>
         </div>
     )

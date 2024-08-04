@@ -11,11 +11,12 @@ import { useDispatch } from 'react-redux'
 import { loadAllProducts } from './store/products-actions'
 import OrderPage, { loader as orderLoader } from './pages/Order'
 import ErrorPage from './pages/Error'
-import Admin, { action as authAction } from './pages/AdminPage'
+import AdminAuth, { action as authAction } from './pages/AdminAuthPage'
 
 //Slick
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Admin from './pages/AdminPage'
 
 
 
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: 'admin',
         element: <Admin/>,
+      },
+      {
+        path: 'adminAuth',
+        element: <AdminAuth/>,
         action: authAction,
       },
     ]

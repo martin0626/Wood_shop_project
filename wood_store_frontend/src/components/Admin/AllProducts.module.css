@@ -1,0 +1,82 @@
+.allProducts{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem;
+}
+
+.searchNav {
+    justify-self: center;
+    padding-inline-end: 2rem;
+    display: flex;
+    position: relative;
+}
+
+.searchInput {
+    background-color: #3333336b;
+    border: 1px solid #ffffff3b;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+
+.searchIcon {
+    position: absolute;
+    font-size: 18px;
+    right: 6%;
+    top: 50%;
+    transition: all 0.3s;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.searchIconSelected {
+    right: -3% !important;
+    color: #fff;
+    pointer-events: all !important;
+}
+
+.searchIconSelected:hover{
+    cursor: pointer;
+    color: #ffffff6c;
+}
+
+.searchResults {
+    background-color: #1f1f1f;
+    color: #fff;
+    text-decoration: none;
+    list-style: none;
+    position: absolute;
+    bottom: -2%;
+    transform: translateY(100%);
+    width: 22rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    font-size: 1.4rem;
+    border-radius: 6px;
+    max-height: 22rem;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.searchResults li{
+    border-bottom: 1px solid #ffffff14;
+    height: 32px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.searchResults li:hover{
+    border-bottom: 1px solid #ffffff62;
+    cursor: pointer;
+    color: #ffffff9c;
+}
