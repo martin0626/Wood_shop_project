@@ -1,0 +1,7 @@
+.addSection{
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6rem;
+}
