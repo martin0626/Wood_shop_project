@@ -27,7 +27,7 @@ export default function CreateInput({placeHolder, inputId, label, errText, defau
                     ?
                 <input defaultValue={defaultValue} placeholder={placeHolder} onBlur={handleBlur} onFocus={handleFocus} type={type} id={inputId} name={inputId} required />
                     :
-                <textarea defaultValue={defaultValue} placeholder={placeHolder} onBlur={handleBlur} onFocus={handleFocus} rows='6'></textarea>
+                <textarea defaultValue={defaultValue} placeholder={placeHolder} onBlur={handleBlur} onFocus={handleFocus} name={inputId} required rows='6'></textarea>
             }
         </div>
     )

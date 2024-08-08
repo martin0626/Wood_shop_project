@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import classes from './AdminHome.module.css';
 import { useEffect, useState } from 'react';
-import { loadAllProducts } from '../../store/products-actions';
+import { loadAllProducts } from '../../../store/products-actions';
 import ProductsList from './AllProducts';
 import ProductVisualComp from './ProductVisual';
 

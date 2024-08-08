@@ -1,0 +1,10 @@
+.prCnt {
+    display: flex;
+    align-items:end;
+    justify-content: space-between;
+    margin: 0rem 8rem;
+    background-color: rgba(254, 204, 3, 0.586);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.8rem;
+}

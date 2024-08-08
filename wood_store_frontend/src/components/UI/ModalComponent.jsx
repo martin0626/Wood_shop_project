@@ -1,10 +1,8 @@
 import classes from "./ModalComponent.module.css"
 import { motion } from 'framer-motion'
-import { useRef } from "react";
 import { createPortal } from 'react-dom'
 
 export default function ModalComponent({children, onClose}){
-    const dialog = useRef();
 
 
     return createPortal(
@@ -28,6 +26,4 @@ export default function ModalComponent({children, onClose}){
         </>,
         document.getElementById('modal')
       );
-        
-    
 };
