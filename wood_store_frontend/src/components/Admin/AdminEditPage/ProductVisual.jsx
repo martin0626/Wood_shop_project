@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import classes from './ProductVisual.module.css';
 import SingleEditablePr from './SingleEditablePr';
 import ModalComponent from '../../UI/ModalComponent';
+import EditFormEl from './EditForm';
 
 
 export default function ProductVisualComp({product}){
@@ -20,13 +21,16 @@ export default function ProductVisualComp({product}){
     }
 
 
-    const editProduct = (data)=>{
+    const editProduct = (key, value)=>{
         //TODO finish this
-        // let key = data[0];
-        // let value = data[1];
-        // setCurrentProduct((prevProd)=>{
-        //     return {prevProd, key: value};
-        // })
+       
+        setCurrentProduct((prevProd)=>{
+            let newProduct = {...prevProd};
+            newProduct[key] = value
+            return newProduct;
+        })
+        console.log(currentProduct);
+        
     }
     
     useEffect(()=>{
@@ -46,12 +50,7 @@ export default function ProductVisualComp({product}){
             {
                 currentEditable
                     && 
-                <ModalComponent onClose={onCloseEdit}>
-                    <div className={classes.editForm}>
-                        <h1>{currentEditable[0]}</h1>
-                        <input defaultValue={currentEditable[1]}/>
-                    </div>
-                </ModalComponent>
+                <EditFormEl onCloseEdit={onCloseEdit} currentEditable={currentEditable} onEdit={editProduct}/>
             }
             {
                 currentProduct
