@@ -99,3 +99,7 @@
     letter-spacing: 1px;
     font-size: 1.4rem;
 }
+
+.disabled {
+    background-color: #505050 !important;
+}

@@ -20,5 +20,5 @@ const editableProductSlice = createSlice({
 })
 
 
-export const productsActions = editableProductSlice.actions;
+export const editActions = editableProductSlice.actions;
 export default editableProductSlice;

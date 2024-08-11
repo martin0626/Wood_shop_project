@@ -1,44 +1,91 @@
-.sliderContent {
-    /* background-color: #0000008c;  */
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
-    height: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-between;
-    row-gap: 12rem;
-    color: #ffff;
-    border-radius: 8px;
-    padding: 12rem;
-}
-
-.header h1{
-    font-size: 8rem;
-}
-
-.description {
-    width: 100%;
-}
 
 
-.images {
-    width: 100%;
+.sliderContent{
+    height: 110vh;
+    width: 100vw;
+    background-image: url('../../assets/exterior.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
-    gap: 2rem;
-    transform: translateX(2%);
+    justify-content: end;
+    align-items: center;
 }
 
-.images img {
-    border-radius: 8px;
-}
-
-.images img:first-of-type {
-    height: 100%;
+.header{
+    background-color: #fcc319;
     width: 40%;
-    transform:  rotate(-9deg);
+    height: 90%;
+    margin-right: 2rem;
+    /* border-radius: 50% 0px 0px 0%; */
+    border-radius: 72% 64% 77% 61% / 18% 65% 66% 101%;
+    position: relative;
 }
 
-.images img:nth-of-type(2) {
-    height: 100%;
-    width: 70%;
-    transform: rotate(9deg);
+
+.innerDecor {
+    background-color: #a87f03;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    margin-right: 2rem;
+    /* border-radius: 50% 0px 0px 0%; */
+    border-radius: 72% 64% 77% 61% / 18% 65% 66% 101%;
+}
+
+.secondInnerDecor {
+    background-color: #816101;
+    width: 96%;
+    height: 91%;
+    display: flex;
+    margin-right: 2rem;
+    /* border-radius: 50% 0px 0px 0%; */
+    border-radius: 72% 64% 77% 61% / 18% 65% 66% 101%;
+}
+
+.innerContent {
+    color: #fff;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2rem;
+    font-size: 2.2rem;
+    width: 80%;
+    letter-spacing: 0.4px;
+    /* line-height: 5rem; */
+    line-clamp: 5rem;
+}
+
+
+
+
+.fancyWord {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 4.4rem;
+    color: #3e2723;
+    background: linear-gradient(120deg, #fcecbd, #ffde7a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.fancyWord::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(120deg, #fcecbd, #ffe492);
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.4s ease-out;
+}
+
+.fancyWord:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
