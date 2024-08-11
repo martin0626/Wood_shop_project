@@ -10,29 +10,24 @@ export default function AdminHomeComp(){
     const dispatch = useDispatch();
 
     const products = useSelector(state => state.products.products);
-    const [ selectedProduct, setSelectedProduct ] = useState(null)
+    const currentEdited = useSelector(state => state.editableProduct.product);
+
 
     useEffect(()=>{
         dispatch(loadAllProducts());
     }, [dispatch])
 
-    useEffect(() => {
-        if (products.length > 0) {
-            setSelectedProduct(products[0]);
-        }
-    }, [products]);
-
-
-    const handleSelect = (id)=>{
-        const product = products.find(p=> p.id === id);
-        setSelectedProduct(product);
-    }
-
-
+    
     return(
         <div className={classes.adminHome}>
-            <ProductVisualComp product={selectedProduct}/>
-            <ProductsList onSelect={handleSelect} products={products}/>
+            {
+                currentEdited.name
+                    ?
+                <ProductVisualComp product={currentEdited}/>
+                    :
+                <h1>No selected Product</h1>
+            }
+            <ProductsList products={products}/>
         </div>
     )
 } 
