@@ -6,3 +6,8 @@
     margin-bottom: 6rem;
     margin-top: 4%;
 }
+
+.controlBtns{
+    display: flex;
+    gap: 2rem;
+}

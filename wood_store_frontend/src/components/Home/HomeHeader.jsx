@@ -2,10 +2,25 @@ import classes from "./HomeHeader.module.css"
 import { motion } from 'framer-motion'
 import interiorImg from '../../assets/interior.jpg'
 import exteriorImg from '../../assets/exterior.jpg'
+import { useEffect, useState } from "react"
 
 
 
 export default function HeaderHome(){
+    const [visibleImage, setVisibleImage ] = useState(false);
+
+    
+
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setVisibleImage(prevState => !prevState);
+        }, 5000); // 5000 milliseconds = 5 seconds
+
+        // Cleanup the interval on component unmount
+        return () => clearInterval(interval);
+    }, []);
+
     return (
             <motion.div 
                 initial={{opacity:0, y: -300}} 
@@ -13,7 +28,19 @@ export default function HeaderHome(){
                 transition={{delay: 0.5}} 
                 className={classes.sliderContent}
             >   
-                    
+                    {
+                        visibleImage ? 
+                        <motion.div 
+                            initial={{opacity:0, x: -300}} 
+                            animate={{opacity: 1, x: 0}} 
+                            transition={{delay: 0.5}}
+                        className={classes.imageInterior}></motion.div> : 
+                        <motion.div
+                            initial={{opacity:0, x: -300}} 
+                            animate={{opacity: 1, x: 0}} 
+                            transition={{delay: 0.5}}
+                        className={classes.imageExteriror}></motion.div>
+                    }
                     <div className={classes.header}>
                         <div className={classes.innerDecor}>
                             <div className={classes.secondInnerDecor}>
