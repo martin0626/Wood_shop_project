@@ -9,7 +9,7 @@ import Checkout from './pages/CheckOutPage'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useDispatch } from 'react-redux'
 import { loadAllProducts } from './store/products-actions'
-import OrderPage, { loader as orderLoader } from './pages/Order'
+import OrderPage, { loader as orderLoader, action as orderAction } from './pages/Order'
 import ErrorPage from './pages/Error'
 import AdminAuth, { action as authAction } from './pages/AdminAuthPage'
 
@@ -48,6 +48,7 @@ const router = createBrowserRouter([
         path: 'order',
         element: <OrderPage/>,
         loader: orderLoader,
+        action: orderAction,
       },
       {
         path: 'admin',

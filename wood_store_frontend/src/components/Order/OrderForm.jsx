@@ -5,11 +5,11 @@ import { checkBulgarianPhoneNumber, checkEmail, checkLen } from '../../utils/Inp
 
 
 const inputValidationMapper = {
-    'firstName': [checkLen],
-    'lastName': [checkLen],
+    'first_name': [checkLen],
+    'last_name': [checkLen],
     'email': [checkEmail],
     'address': [checkLen],
-    'phone': [checkBulgarianPhoneNumber],
+    'phone_number': [checkBulgarianPhoneNumber],
 }
 
 
@@ -56,11 +56,11 @@ export default function OrderForm({ onFormSubmit, orderData }){
 
     const [ errors, setErrors ] = useState(
         {
-            'firstName': [],
-            'lastName': [],
+            'first_name': [],
+            'last_name': [],
             'email': [],
             'address': [],
-            'phone': [],
+            'phone_number': [],
         }
     );
     
@@ -77,16 +77,14 @@ export default function OrderForm({ onFormSubmit, orderData }){
         if(!hasErrors(errors)){
             onFormSubmit(data);
         }
-
     }
 
     return (
         <form onSubmit={formHandler} className={classes.orderForm}>
-            <OrderInput defaultValue={orderData.firstName} placeHolder={'Ivan'} label={'First Name'} inputId={'firstName'} errText={errors['firstName']} />
-            <OrderInput defaultValue={orderData.lastName} placeHolder={'Ivanov'} label={'Last Name'} inputId={'lastName'} errText={errors['lastName']} />
+            <OrderInput defaultValue={orderData.first_name} placeHolder={'Ivan'} label={'First Name'} inputId={'first_name'} errText={errors['first_name']} />
+            <OrderInput defaultValue={orderData.last_name} placeHolder={'Ivanov'} label={'Last Name'} inputId={'last_name'} errText={errors['last_name']} />
             <OrderInput defaultValue={orderData.email} placeHolder={'test@example.com'} label={'Email'} inputId={'email'} errText={errors['email']} />
-            <OrderInput defaultValue={orderData.address}  placeHolder={'Mladost-4, bl.491'} label={'Address'} inputId={'address'} errText={errors['address']} />
-            <OrderInput defaultValue={orderData.phone} placeHolder={'08X XXX XXXX'} label={'Phone Number'} inputId={'phone'} errText={errors['phone']} />
+            <OrderInput defaultValue={orderData.phone_number} placeHolder={'08X XXX XXXX'} label={'Phone Number'} inputId={'phone_number'} errText={errors['phone_number']} />
 
             <div className={classes.btnOrder}>
                 <button className='defaultBtn'>Proceed</button>

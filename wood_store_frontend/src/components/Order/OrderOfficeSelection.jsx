@@ -130,7 +130,8 @@ export default function OfficeSelection({citiesData, handleChangeView, onAddress
     const handleSubmit = ()=>{
         onAddressSubmit({
             city: cityInput.current.value,
-            addressDelivery: addressInput.current.value, 
+            addressDelivery: addressInput.current.value,
+            region: regionInput.current.value
         })
     }
 

@@ -1,4 +1,4 @@
-import { useLoaderData, useLocation, useNavigate } from "react-router";
+import { redirect, useLoaderData, useLocation, useNavigate } from "react-router";
 import Order from "../components/Order/OrderComponent";
 import { Suspense, useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -85,8 +85,34 @@ export async function loader(){
     return defer({
         data: loadAllEcontData(),
     })
-
-
-    
-    
 } 
+
+
+export async function action({request}) {
+   
+//TODO: Check basket request prop
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData.entries());
+    const jsonData = JSON.stringify(data);
+
+    try{
+        const response = await fetch('http://localhost:8000/api/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: jsonData,
+        });
+
+        const resData = await response.json();
+        
+
+        console.log(resData);
+
+        return redirect('/');
+
+    }catch(err){
+        console.log(err);
+        return 'ads'
+    }
+}

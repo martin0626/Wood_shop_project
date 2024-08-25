@@ -2,6 +2,8 @@ import { useState } from 'react'
 import classes from './OrderComponent.module.css'
 import OrderForm from './OrderForm';
 import OfficeSelection from './OrderOfficeSelection';
+import { useSubmit } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const officeChoseView = 'OFFICEINFO';
@@ -11,23 +13,25 @@ const personalInfoView = 'PERSONALINFO';
 
 export default function Order({citiesData}){
 
+    const submit = useSubmit();
+    const cartItems = useSelector((state)=> state.cart.items);
     const [ visibleSection, setVisibleSection ] = useState(personalInfoView);
     const [ orderData, setOrderData ] = useState(
         {
-            firstName: "",
-            lastName: "",
+            first_name: "",
+            last_name: "",
             email: "",
             address: "",
             phone: "",
             city: "",
-            addressDelivery: ""
+            region: "",
         }
     )
     
     const formSubmitHandler = (data)=>{
         console.log(data);
         setOrderData(currData => {
-            return {...data, city: currData.city, addressDelivery: currData.addressDelivery};
+            return {...data, city: currData.city, address: currData.addressDelivery};
         });
 
         handleChangeView(officeChoseView);
@@ -38,12 +42,23 @@ export default function Order({citiesData}){
     }
 
     const deliverySubmitHandler = (data) =>{
-        setOrderData(currData => {
-            return {...currData, city: data.city, addressDelivery: data.addressDelivery};
-        });
+        // setOrderData(currData => {
+        //     let newData = 
+        //     submit(orderData, { method: 'post', action: '' })
+        //     return {...currData, city: data.city, address: data.addressDelivery, region: data.region};
+        // });
+
+
+        let updatedData = {...orderData, 
+            city: data.city, 
+            address: data.addressDelivery, 
+            region: data.region, 
+            status: "PROCESSING",
+            basket: cartItems,
+        }
+        submit(updatedData, { method: 'post', action: '' });
     };
 
-    console.log(orderData);
 
     return(
         <div className={classes.orderContainer}>
