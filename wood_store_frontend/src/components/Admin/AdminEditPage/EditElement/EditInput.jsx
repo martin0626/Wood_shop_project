@@ -5,7 +5,7 @@ import classes from './EditForm.module.css';
 export default function EditInputEl({currentEditable, refEl, ...props}){
     const [isSelected, setIsSelected] = useState(false);
 
-    console.log(currentEditable);
+    // console.log(currentEditable);
     
 
     return (

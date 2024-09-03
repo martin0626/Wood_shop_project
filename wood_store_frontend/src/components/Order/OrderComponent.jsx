@@ -56,7 +56,8 @@ export default function Order({citiesData}){
             status: "PROCESSING",
             basket: cartItems,
         }
-        submit(updatedData, { method: 'post', action: '' });
+        
+        submit(JSON.stringify(updatedData), { method: 'post', action: '' });
     };
 
 

@@ -39,7 +39,7 @@ export default function ProductsList({products}){
                             }) 
                     :
                         <h1>No Products</h1>
-        }
+            }
         </section>
     )
 }

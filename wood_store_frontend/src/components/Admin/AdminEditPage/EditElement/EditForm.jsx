@@ -17,7 +17,6 @@ export default function EditFormEl({onCloseEdit, currentEditable, onEdit}){
         'imageUrl': 'url',
         'additionalImgUrls': 'url'
     }
-    console.log(currentEditable);
     
     const inputRef = useRef();
     const type = currentEditable[0];
@@ -30,21 +29,37 @@ export default function EditFormEl({onCloseEdit, currentEditable, onEdit}){
         onCloseEdit()
     }
 
-    let currentInput = <EditInputEl currentEditable={currentEditable} refEl={inputRef} type={typeMapper[type]}/>
+    const submitHandler = (e)=>{
+        
+        e.preventDefault();
+        const data = new FormData(e.currentTarget);
+        const values = data.getAll(type);
+        let userInputData = values
+
+        if(values.length === 1){
+            userInputData = values[0];
+        };
+
+        onEdit(type, userInputData);
+        onCloseEdit()
+    } 
+
+    let currentInput = <EditInputEl name={type} currentEditable={currentEditable} refEl={inputRef} type={typeMapper[type]}/>
 
     if(type === 'additionalImgUrls'){
-        currentInput = <>{currentEditable[1].map(()=> <EditInputEl currentEditable={currentEditable} refEl={inputRef} type='url'/>)}</>
+        currentInput = <>{currentEditable[1].map(()=> <EditInputEl name={type} currentEditable={currentEditable} refEl={inputRef} type='url'/>)}</>
     }
 
     //TODO Select Inputs and Text Area, Urls Fix
     return (
         <ModalComponent onClose={onCloseEdit}>
-            <div className={classes.editForm}>
+            <form onSubmit={submitHandler} className={classes.editForm}>
                 {currentInput}
                 <div>
-                    <button onClick={saveHandler} className='defaultBtn'>Save Change</button>
+                    <button type='submit' className='defaultBtn'>Save Change</button>
+                    {/* <button onClick={saveHandler} className='defaultBtn'>Save Change</button> */}
                 </div>
-            </div>
+            </form>
 
         </ModalComponent>
     )

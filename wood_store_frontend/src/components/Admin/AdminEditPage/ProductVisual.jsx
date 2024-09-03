@@ -6,6 +6,9 @@ import EditFormEl from './EditElement/EditForm';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingUi from '../../UI/LoadingUI';
 import { editActions } from '../../../store/editProduct-slice';
+import { productsActions } from '../../../store/products-slice';
+import { loadAllProducts } from '../../../store/products-actions';
+import { getToken } from '../../../utils/authorization';
 
 
 export default function ProductVisualComp(){
@@ -17,10 +20,8 @@ export default function ProductVisualComp(){
     const isEdited = useSelector(state => state.editableProduct.isEdited);
     const currentProduct = useSelector(state=> state.editableProduct.product)
     const dispatch = useDispatch();
-    currentProduct
+    
     console.log(currentProduct);
-    
-    
 
     const handleChooseElement = (el)=>{
         setCurrentEditable([el, currentProduct[el]])        
@@ -35,6 +36,39 @@ export default function ProductVisualComp(){
         let updatedProduct = {...currentProduct};
         updatedProduct[key] = value;
         dispatch(editActions.editProduct(updatedProduct));   
+    }   
+
+
+    const updateProduct = async (data)=>{
+        try{
+            let token = getToken();
+            const response = await fetch('http://localhost:8000/admin/product/update', {
+                method: 'PATCH', // Specify the request method
+                headers: {
+                'Content-Type': 'application/json', // Set the content type
+                'Authorization': `Bearer <${token}>` // Add the Bearer token to the Authorization header
+                },
+                body: JSON.stringify({
+                    data
+                }) 
+            })
+            debugger
+
+            if(!response.ok){
+                console.log("Error Something went wrong!");
+            };
+
+            const result = await response.json();
+        }catch(err){
+            console.error('There was a problem with the fetch operation:', err); 
+        }
+        
+    }
+
+
+    const handleUpdateProduct = ()=>{
+        updateProduct(currentProduct);
+        loadAllProducts();
     }
 
     const testImages = [
@@ -64,8 +98,8 @@ export default function ProductVisualComp(){
                     ?
                         <div className={classes.produDet}>
                             <div className={classes.prodAction}>
-                                <button  className={`defaultBtn ${!isEdited && classes.disabled}`}>Save Changes</button>
-                                <button className='defaultBtn'>Delete</button>
+                                <button onClick={handleUpdateProduct} className={`defaultBtn ${!isEdited && classes.disabled}`}>Save Changes</button>
+                                <button  className='defaultBtn'>Delete</button>
                             </div>
                             <div className={classes.prodContent}>
                                 <SingleEditablePr id={'name'} onChoose={handleChooseElement}>

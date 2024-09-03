@@ -93,15 +93,17 @@ export async function action({request}) {
 //TODO: Check basket request prop
     const formData = await request.formData();
     const data = Object.fromEntries(formData.entries());
-    const jsonData = JSON.stringify(data);
+    
 
     try{
+        debugger
+        
         const response = await fetch('http://localhost:8000/api/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: jsonData,
+            body: data,
         });
 
         const resData = await response.json();
