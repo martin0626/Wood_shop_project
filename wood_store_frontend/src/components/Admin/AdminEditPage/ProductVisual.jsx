@@ -9,6 +9,7 @@ import { editActions } from '../../../store/editProduct-slice';
 import { productsActions } from '../../../store/products-slice';
 import { loadAllProducts } from '../../../store/products-actions';
 import { getToken } from '../../../utils/authorization';
+import { uiActions } from '../../../store/ui-slice';
 
 
 export default function ProductVisualComp(){
@@ -16,12 +17,11 @@ export default function ProductVisualComp(){
     // const [currentProduct, setCurrentProduct] = useState(product);
     const [currentEditable, setCurrentEditable] = useState(null);
     const isLoading = useSelector(state => state.ui.isLoading);
-
+    let token = getToken();
     const isEdited = useSelector(state => state.editableProduct.isEdited);
     const currentProduct = useSelector(state=> state.editableProduct.product)
     const dispatch = useDispatch();
     
-    console.log(currentProduct);
 
     const handleChooseElement = (el)=>{
         setCurrentEditable([el, currentProduct[el]])        
@@ -39,36 +39,19 @@ export default function ProductVisualComp(){
     }   
 
 
-    const updateProduct = async (data)=>{
-        try{
-            let token = getToken();
-            const response = await fetch('http://localhost:8000/admin/product/update', {
-                method: 'PATCH', // Specify the request method
-                headers: {
-                'Content-Type': 'application/json', // Set the content type
-                'Authorization': `Bearer <${token}>` // Add the Bearer token to the Authorization header
-                },
-                body: JSON.stringify({
-                    data
-                }) 
-            })
-            debugger
-
-            if(!response.ok){
-                console.log("Error Something went wrong!");
-            };
-
-            const result = await response.json();
-        }catch(err){
-            console.error('There was a problem with the fetch operation:', err); 
-        }
-        
-    }
+    
 
 
     const handleUpdateProduct = ()=>{
         updateProduct(currentProduct);
-        loadAllProducts();
+    }
+
+    const handleDeleteProduct = ()=>{
+        const confiramtion = window.confirm(`Are you sure, you want to delete product with name: ${currentProduct.name}`);
+
+        if(confiramtion){
+            deleteProduct(currentProduct.id)            
+        }
     }
 
     const testImages = [
@@ -78,6 +61,57 @@ export default function ProductVisualComp(){
         "https://hips.hearstapps.com/hmg-prod/images/rustic-weathered-wood-logs-royalty-free-image-1654709658.jpg",
         "https://housing.com/news/wp-content/uploads/2023/04/What-is-timber-wood-and-which-are-the-best-types-f.jpg",
     ];
+
+
+    //Action Funcs
+    const updateProduct = async (data)=>{
+        dispatch(uiActions.setLoading());
+        try{
+            
+            const response = await fetch('http://localhost:8000/admin/product/update', {
+                method: 'PATCH', // Specify the request method
+                headers: {
+                'Content-Type': 'application/json', // Set the content type
+                'Authorization': `Bearer ${token}` // Add the Bearer token to the Authorization header
+                },
+                body: JSON.stringify(data) 
+            })
+            
+            if(!response.ok){
+                return "Error Something went wrong!";
+            };
+            dispatch(editActions.setNewEdited(currentProduct));
+            dispatch(loadAllProducts());
+        }catch(err){
+            console.error('There was a problem with the fetch operation:', err); 
+        };
+
+        dispatch(uiActions.setLoaded());
+    }
+
+    const deleteProduct = async (id)=>{
+        try{
+            const request = await fetch(
+                `http://localhost:8000/admin/${id}`, 
+                {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                }
+            )
+
+            if(!request.ok){
+                return "Error Something went wrong!";
+            };
+            dispatch(editActions.setNewEdited({}));
+            dispatch(loadAllProducts());
+        }catch(err){
+            console.error('There was a problem with the fetch operation:', err); 
+        }
+
+    }
 
     return (
         <>
@@ -99,7 +133,7 @@ export default function ProductVisualComp(){
                         <div className={classes.produDet}>
                             <div className={classes.prodAction}>
                                 <button onClick={handleUpdateProduct} className={`defaultBtn ${!isEdited && classes.disabled}`}>Save Changes</button>
-                                <button  className='defaultBtn'>Delete</button>
+                                <button onClick={handleDeleteProduct}  className='defaultBtn'>Delete</button>
                             </div>
                             <div className={classes.prodContent}>
                                 <SingleEditablePr id={'name'} onChoose={handleChooseElement}>

@@ -38,6 +38,9 @@ async function fetchProducts(dispatch, url, isSorted = false){
         }
 }
 
+
+
+
 export function loadAllProducts(){
     const url = productAPIMapper['products'];
     return async (dispatch)=>{

@@ -8,7 +8,6 @@ const editableProductSlice = createSlice({
     },
     reducers: {
         setNewEdited(state, action){
-            debugger
             state.product = action.payload
             state.isEdited = false
         },
